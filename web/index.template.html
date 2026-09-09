@@ -593,7 +593,7 @@ footer a{color:var(--link)}
     <p class="sec-sub">三件事：資料從哪裡來、決策是誰做的、憑什麼相信輸出是對的。</p>
 
     <details class="disc" id="disc-source">
-      <summary><b>資料源的選擇 —— openfun API 還是自己爬 web.pcc.gov.tw</b><span class="claim" id="src-claim">實驗進行中</span></summary>
+      <summary><b>資料源的選擇 —— openfun API 還是自己爬 web.pcc.gov.tw</b><span class="claim" id="src-claim">10 筆樣本 · 冷啟動爬蟲 2/10</span></summary>
       <div class="disc-body" id="src-body"></div>
     </details>
 
@@ -1253,9 +1253,9 @@ footer a{color:var(--link)}
   // ── ③(b) 14 則 ADR（內容出自 docs/adr/） ─────────────────────────
   // 決策者是這張表的重點：使用者拍板 / 我逕行決定 / 我推翻客戶規格，分開標示。
   var ADRS = [
-    ['001', '資料源選用 openfun API，不自建爬蟲', '使用者（事後補實驗）', '已確認',
+    ['001', '資料源選用 openfun API，不自建爬蟲', '使用者（事後補實驗證實）', '已確認',
       '用開放文化基金會維運的 openfun API 取當日公告與細查，不自建爬蟲。',
-      '這則當初由使用者拍板，事後才補做「API vs 自建爬蟲」的逐欄比較實驗 —— 也就是上面那個折疊區塊。決策先於證據，這在真實專案裡很常見；補實驗的意義是讓它可以被推翻。'],
+      '這則當初由使用者拍板，事後才補做「API vs 自建爬蟲」的逐欄比較實驗 —— 也就是上面那個折疊區塊。實驗證實了原決策，而且證據比預期更強：原本以為差別在欄位完整度，實際上差別在「能不能自動化」這個更根本的層次（官網每頁都要解驗證碼）。但若當初結果是推翻的，代價就是整個資料層重寫 —— 這個風險當時真實存在。'],
     ['002', '去重鍵用 filename，不用規格寫的 unit_id + job_number', '我（推翻規格）', '已實作',
       '以 filename 作為公告唯一鍵去重。',
       '實測發現 unit_id + job_number 是「案件」鍵而非公告鍵 —— 原公告與更正公告共用同一組值（中央研究院 2.1 / BTRC11503042E：TIQ-11-71107895 與 TIQ-12-71107895）。照規格實作，每一筆更正公告都會被當成重複丟掉，而更正常帶截止日延期、廠商資格變更。這不是效能問題，是客戶會漏掉重要資訊，而且這個錯誤是靜默的。'],
@@ -1325,15 +1325,69 @@ footer a{color:var(--link)}
     });
   })();
 
-  // ── ③(a) 資料源實驗 —— 寫入 docs/experiments/api-vs-scraper.md 後才有內容 ──
+  // ── ③(a) 資料源實驗（數字全部出自 docs/experiments/api-vs-scraper.md）──
   (function renderSource() {
     var body = document.getElementById('src-body');
-    var p1 = el('p');
-    p1.innerHTML = '這一則的實驗記錄會落在 <code>docs/experiments/api-vs-scraper.md</code>：拿 <b>10 筆真實標案</b>，把 openfun API 與直接爬 web.pcc.gov.tw 逐欄比對，並記錄延遲與解析脆弱度。';
-    body.appendChild(p1);
-    var p2 = el('p');
-    p2.innerHTML = '<b style="color:var(--warn)">此區塊尚未填入結論</b> —— 實驗在本頁產出時還在進行，而本頁的規則是「絕不編造數字」。等 <code>docs/experiments/api-vs-scraper.md</code> 就位後重跑 <code>node scripts/build-web.js</code>，這裡才會有實際的比較結果。目前既有的決策見下方 ADR 001（使用者拍板、事後補實驗）。';
-    body.appendChild(p2);
+
+    body.appendChild(mkP('決策先做、證據後補。專案一開始就選了 openfun 鏡像 API，'
+      + '<b>當時沒有做實驗</b>。事後補做了 10 筆真實標案、10 個欄位的逐欄比對 —— '
+      + '有兩種可能結果：證實或推翻。'));
+
+    body.appendChild(mkH('一、爬蟲在絕大多數頁面上根本進不去'));
+    body.appendChild(mkP('官方詳情頁有<b>撲克牌圖形驗證碼</b>，而且是<b>無條件出現</b>，不是被速率觸發：'
+      + '同一個 URL 以 6 秒間隔冷抓 5 次，<b>5 次全部被擋</b>。10 筆樣本冷啟動只抓到 <b>2 筆</b>。'));
+    body.appendChild(mkP('驗證碼可解，<b>是通行費而不是牆</b> —— 人工解一次約可連續看 6~7 頁，'
+      + 'credit 記在伺服器端綁 IP，不在 cookie 裡。換算下來，每天 35 筆需要'
+      + '<b>人工解 5~6 次驗證碼</b>。而需求是「每天 16:10 自動執行」。'));
+    body.appendChild(mkP('而且 <b>WAF 硬擋 headless 瀏覽器</b>：Playwright 拿到 '
+      + '<code>Web Page Blocked! Attack ID: 20000051</code>，連搜尋首頁都被擋；'
+      + '但同一時間、同一個 IP 用 curl 卻通得過。「開真瀏覽器去解驗證碼」在指紋層就被封掉了。'));
+
+    body.appendChild(mkH('二、進得去的頁面上，兩邊資料完全一致'));
+    body.appendChild(mkP('8 筆可比對的標案、8 個招標類欄位：<b>84 組「兩邊都有」的欄位配對，語意差異 0 筆</b>。'
+      + '在可觸及的範圍內兩邊打平。這一點對爬蟲有利，必須寫進來 —— <b>鏡像沒有失真</b>。'));
+    body.appendChild(mkP('<b>爬蟲獨有的欄位：零。</b>官網有兩個標籤是 API 沒有的，但那兩個在 8 個頁面上全部是空值 ——'
+      + '官網渲染空列，API 直接丟掉空值。'));
+
+    body.appendChild(mkH('三、其餘每一個軸都是 API 勝'));
+    var rows = [
+      ['實際可觸及', 'API', '冷啟動 10 筆抓到 2 筆 vs 10 筆'],
+      ['結構深度', 'API', '79~88 個欄位 vs 65~66 個解析到的標籤；16~22 個只有 API 有'],
+      ['值的可用格式', 'API', '標的分類 8/8 筆格式不同，爬來的會讓 parseCategory() 回 null'],
+      ['公告史', 'API', '一次呼叫回 1~7 個版本；官網一個 URL 只有一版'],
+      ['資料來源時間', 'API', '有 fetched_at，官網頁面完全沒有'],
+      ['延遲', 'API', '中位數 283ms vs 1834ms（6.5 倍）；回應 18.8KB vs 120.6KB'],
+      ['程式碼量', 'API', '取同樣 10 個欄位，7 行 vs 98 行'],
+      ['第一手、無中介', '爬蟲', '這是爬蟲唯一勝出的軸']
+    ];
+    var tb = el('table', 'sched');
+    var th = el('thead'), htr = el('tr');
+    ['軸', '勝方', '數字'].forEach(function (h) { htr.appendChild(el('th', null, h)); });
+    th.appendChild(htr); tb.appendChild(th);
+    var tbody = el('tbody');
+    rows.forEach(function (r) {
+      var tr = el('tr');
+      tr.appendChild(el('td', null, r[0]));
+      tr.appendChild(el('td', r[1] === 'API' ? 'ok' : 'no', r[1]));
+      tr.appendChild(el('td', 'm', r[2]));
+      tbody.appendChild(tr);
+    });
+    tb.appendChild(tbody);
+    var wrap = el('div', 'tblwrap');
+    wrap.style.maxHeight = 'none';
+    wrap.appendChild(tb);
+    body.appendChild(wrap);
+
+    body.appendChild(mkH('結論'));
+    body.appendChild(mkP('不是「API 比較方便」，而是<b>爬蟲在這個需求下不可行</b>：'
+      + '一個需要人工解驗證碼的步驟放在無人排程裡，等於這條需求不成立。'));
+    body.appendChild(mkP('代價是<b>單點依賴一個非官方鏡像</b>。但實驗證實鏡像沒有失真，'
+      + '這讓風險從「資料可能不對」降為「服務可能中斷」—— 後者可監控、可備援，前者不是。'));
+    body.appendChild(mkP('附帶結果：Excel 的超連結指向官網，讓人<b>手動</b>點開查證。'
+      + '人點得開（遇到驗證碼但解得掉），機器抓不動 —— 這個分工剛好成立。'));
+
+    function mkP(html) { var e = el('p'); e.innerHTML = html; return e; }
+    function mkH(t) { var e = el('p'); e.innerHTML = '<b>' + t + '</b>'; e.style.marginTop = '14px'; return e; }
   })();
 
   // ── ④ 陷阱清單（內容出自 docs/spec-gaps.md） ──────────────────────

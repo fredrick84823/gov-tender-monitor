@@ -107,12 +107,17 @@ function main() {
   console.log(`嵌入示範資料：web/data/demo-data.json  →  ${kb(data.length)}`);
   console.log(`寫出：web/dist/index.html  →  ${kb(html.length)}`);
 
-  // ③(a) 的資料源實驗還在進行中；檔案一旦就位就提醒操作者這頁還掛著佔位文字
-  const expPath = p('docs/experiments/api-vs-scraper.md');
-  if (fs.existsSync(expPath)) {
-    console.warn('注意：docs/experiments/api-vs-scraper.md 已存在，但頁面 ③(a) 仍是佔位文字 —— 需人工把實驗結論寫進 web/index.template.html');
-  } else {
+  // ③(a) 資料源實驗：偵測佔位文字本身，而不是只看實驗檔存不存在
+  const expExists = fs.existsSync(p('docs/experiments/api-vs-scraper.md'));
+  const stillPlaceholder = html.includes('此區塊尚未填入結論');
+  if (stillPlaceholder && expExists) {
+    console.warn('注意：實驗記錄已存在，但頁面 ③(a) 仍是佔位文字 —— 需把結論寫進 web/index.template.html');
+  } else if (stillPlaceholder) {
     console.log('待補：docs/experiments/api-vs-scraper.md 尚不存在，③(a) 維持明確標示的佔位區塊');
+  } else if (!expExists) {
+    console.warn('警告：③(a) 已有結論文字，但 docs/experiments/api-vs-scraper.md 不存在 —— 數字可能沒有來源');
+  } else {
+    console.log('③(a) 已填入實驗結論，來源 docs/experiments/api-vs-scraper.md');
   }
 
   for (const tag of ['<!doctype', '<html', '<head', '<body']) {
