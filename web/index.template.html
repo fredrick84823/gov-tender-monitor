@@ -1,0 +1,1389 @@
+<title>公標網規則實驗室</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* ── 色票取自客戶真實 Excel 範本：#873222 標題橫幅 / #66272A 表頭 / #F7F2F0 斑馬列
+      / #333333 內文 / #0563C1 連結。頁面的暖灰全部往那塊磚紅偏。
+      語意色與品牌色分開：命中=綠、排除=暖灰褐、警示=焦橙。 ───────────────── */
+:root{
+  color-scheme: light;
+  --canvas:#FBF8F7;
+  --canvas-2:#F4EEEB;
+  --surface:#FFFFFF;
+  --zebra:#F7F2F0;
+  --ink:#333333;
+  --ink-strong:#241A17;
+  --ink-soft:#6E5C55;
+  --ink-faint:#9A8880;
+  --line:#E6DBD6;
+  --line-strong:#D3C3BC;
+  --brand:#873222;
+  --brand-deep:#66272A;
+  --brand-wash:#F5E7E3;
+  --brand-ink:#873222;
+  --link:#0563C1;
+  --hit:#2F6B43;
+  --hit-wash:#E8F1E9;
+  --hit-line:#BFD8C5;
+  --drop:#7B6A62;
+  --drop-wash:#EFEAE7;
+  --drop-line:#DACFC9;
+  --warn:#B0541A;
+  --warn-wash:#FBEADC;
+  --warn-line:#EDCDAE;
+  --shadow:0 1px 2px rgba(80,45,35,.04);
+  --focus:#873222;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --canvas:#17120F;
+    --canvas-2:#211A17;
+    --surface:#1E1815;
+    --zebra:#251D1A;
+    --ink:#E8DCD6;
+    --ink-strong:#F6EDE8;
+    --ink-soft:#B6A29A;
+    --ink-faint:#8B7A72;
+    --line:#362B26;
+    --line-strong:#4A3B34;
+    --brand:#CE7059;
+    --brand-deep:#B85C46;
+    --brand-wash:#33201B;
+    --brand-ink:#E29277;
+    --link:#7FB4EE;
+    --hit:#84C495;
+    --hit-wash:#1C2A20;
+    --hit-line:#33513C;
+    --drop:#AC9A91;
+    --drop-wash:#272020;
+    --drop-line:#43372F;
+    --warn:#E09257;
+    --warn-wash:#33220F;
+    --warn-line:#5A3C1F;
+    --shadow:0 1px 2px rgba(0,0,0,.3);
+    --focus:#E29277;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --canvas:#17120F;
+  --canvas-2:#211A17;
+  --surface:#1E1815;
+  --zebra:#251D1A;
+  --ink:#E8DCD6;
+  --ink-strong:#F6EDE8;
+  --ink-soft:#B6A29A;
+  --ink-faint:#8B7A72;
+  --line:#362B26;
+  --line-strong:#4A3B34;
+  --brand:#CE7059;
+  --brand-deep:#B85C46;
+  --brand-wash:#33201B;
+  --brand-ink:#E29277;
+  --link:#7FB4EE;
+  --hit:#84C495;
+  --hit-wash:#1C2A20;
+  --hit-line:#33513C;
+  --drop:#AC9A91;
+  --drop-wash:#272020;
+  --drop-line:#43372F;
+  --warn:#E09257;
+  --warn-wash:#33220F;
+  --warn-line:#5A3C1F;
+  --shadow:0 1px 2px rgba(0,0,0,.3);
+  --focus:#E29277;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--canvas);
+  color:var(--ink);
+  font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,-apple-system,"Helvetica Neue",sans-serif;
+  font-size:15px;
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+.mono,td.num,th.num,.stat-n,.fx-n{
+  font-family:"IBM Plex Mono","SF Mono",ui-monospace,Menlo,Consolas,monospace;
+  font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1;
+}
+h1,h2,h3,.serif{
+  font-family:"Noto Serif TC","Songti TC",Georgia,"Times New Roman",serif;
+  font-weight:700;
+  letter-spacing:-.01em;
+  color:var(--ink-strong);
+}
+a{color:var(--link);text-decoration:none;border-bottom:1px solid transparent}
+a:hover{border-bottom-color:currentColor}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:2px}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+@media (max-width:640px){.wrap{padding:0 16px}}
+
+/* ── header ─────────────────────────────────────────────────────────── */
+.top{border-top:5px solid var(--brand);background:var(--surface);border-bottom:1px solid var(--line)}
+.top-in{padding:34px 0 26px}
+.eyebrow{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--brand-ink);font-weight:700;margin:0 0 10px;
+  font-family:"IBM Plex Mono",ui-monospace,monospace;
+}
+h1{font-size:clamp(26px,3.6vw,40px);line-height:1.15;margin:0 0 12px}
+.thesis{font-size:clamp(15px,1.5vw,18px);color:var(--ink-soft);margin:0;max-width:60ch}
+.thesis b{color:var(--ink-strong);font-weight:500}
+.stats{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:1px;background:var(--line);border:1px solid var(--line);
+  margin:26px 0 0;border-radius:3px;overflow:hidden;
+}
+@media (max-width:560px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.stat{background:var(--surface);padding:14px 16px}
+.stat-n{font-size:24px;font-weight:600;line-height:1.1;color:var(--ink-strong);display:block}
+.stat-l{font-size:12px;color:var(--ink-faint);letter-spacing:.04em}
+.stat.is-hit .stat-n{color:var(--hit)}
+.stat.is-drop .stat-n{color:var(--drop)}
+.stat.is-zero .stat-n{color:var(--brand-ink)}
+.themebtn{
+  position:absolute;top:14px;right:24px;
+  background:none;border:1px solid var(--line);color:var(--ink-soft);
+  border-radius:4px;padding:4px 9px;font-size:11px;cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;
+}
+.themebtn:hover{border-color:var(--line-strong);color:var(--ink)}
+
+/* ── sections ───────────────────────────────────────────────────────── */
+section{padding:56px 0;border-bottom:1px solid var(--line)}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 6px;flex-wrap:wrap}
+.sec-no{
+  font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+  color:var(--surface);background:var(--brand);
+  width:26px;height:26px;display:grid;place-items:center;border-radius:3px;flex:none;
+}
+h2{font-size:clamp(20px,2.2vw,26px);margin:0}
+.sec-sub{color:var(--ink-soft);margin:0 0 30px;max-width:76ch;font-size:14.5px}
+
+/* ── funnel ─────────────────────────────────────────────────────────── */
+.fx{
+  background:var(--surface);border:1px solid var(--line);border-radius:4px;
+  padding:24px 26px 20px;box-shadow:var(--shadow);
+}
+.fx-title{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 18px;font-family:"IBM Plex Mono",monospace}
+.fx-row{display:grid;grid-template-columns:5.5rem 1fr;gap:16px;align-items:center;margin-bottom:14px}
+.fx-n{font-size:22px;font-weight:600;text-align:right;color:var(--ink-strong);line-height:1.2}
+.fx-bar-cell{display:flex;align-items:center;gap:12px;min-width:0}
+.fx-track{flex:1;min-width:0;height:26px;background:var(--canvas-2);border-radius:2px;display:flex;overflow:hidden}
+.fx-fill{height:100%;background:var(--brand);min-width:3px;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.fx-fill.is-hit{background:var(--hit)}
+.fx-fill.is-drop{background:var(--drop);opacity:.55}
+.fx-cap{font-size:13px;color:var(--ink-soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:52%}
+.fx-cap em{font-style:normal;color:var(--drop);font-weight:500}
+.fx-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;padding-top:14px;border-top:1px solid var(--line);font-size:12px;color:var(--ink-faint)}
+.sw{width:9px;height:9px;border-radius:2px;display:inline-block;margin-right:6px;vertical-align:baseline}
+
+/* ── lab layout ─────────────────────────────────────────────────────── */
+.lab{display:grid;grid-template-columns:298px minmax(0,1fr);gap:20px;margin-top:24px;align-items:start}
+@media (max-width:940px){.lab{grid-template-columns:1fr}}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow)}
+.panel-hd{
+  display:flex;justify-content:space-between;align-items:center;gap:8px;
+  padding:12px 16px;border-bottom:1px solid var(--line);
+}
+.panel-hd h3{font-size:14px;margin:0}
+details.grp{border-bottom:1px solid var(--line)}
+details.grp:last-of-type{border-bottom:0}
+details.grp>summary{
+  padding:11px 16px;cursor:pointer;list-style:none;display:flex;
+  justify-content:space-between;align-items:center;gap:8px;font-size:13.5px;font-weight:500;
+}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary::after{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--ink-faint);font-size:15px}
+details.grp[open]>summary::after{content:"–"}
+details.grp>summary:hover{background:var(--zebra)}
+.grp-n{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:11.5px;color:var(--ink-faint);margin-left:auto;padding-right:10px}
+.grp-body{padding:4px 16px 16px}
+
+label.chk{display:flex;gap:8px;align-items:flex-start;padding:3px 0;font-size:13px;cursor:pointer;color:var(--ink-soft);line-height:1.5}
+label.chk input{margin:4px 0 0;accent-color:var(--brand);flex:none}
+label.chk.on{color:var(--ink)}
+
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin:0 0 8px}
+.chip{
+  display:inline-flex;align-items:center;gap:5px;font-size:12px;
+  border:1px solid var(--line-strong);background:var(--canvas);color:var(--ink);
+  border-radius:999px;padding:2px 4px 2px 9px;line-height:1.7;
+}
+.chip button{
+  border:0;background:none;color:var(--ink-faint);cursor:pointer;
+  font-family:"IBM Plex Mono",monospace;font-size:13px;line-height:1;padding:2px 4px;border-radius:999px;
+}
+.chip button:hover{color:var(--brand);background:var(--brand-wash)}
+.chip.tog{cursor:pointer;padding:2px 10px;user-select:none;transition:none}
+.chip.tog.on{border-color:var(--drop-line);background:var(--drop-wash);color:var(--ink-soft)}
+.chip.tog.off{border-color:var(--line);background:transparent;color:var(--ink-faint);text-decoration:line-through}
+.chip.tog.flash{border-color:var(--warn);background:var(--warn-wash);color:var(--warn);text-decoration:line-through}
+.addrow{display:flex;gap:6px}
+.addrow input{
+  flex:1;min-width:0;font:inherit;font-size:12.5px;padding:4px 8px;
+  border:1px solid var(--line-strong);border-radius:3px;background:var(--canvas);color:var(--ink);
+}
+.btn{
+  font:inherit;font-size:12.5px;padding:4px 11px;cursor:pointer;
+  border:1px solid var(--line-strong);background:var(--canvas);color:var(--ink);border-radius:3px;
+}
+.btn:hover{border-color:var(--brand);color:var(--brand-ink)}
+.btn:active{transform:scale(.98)}
+.btn.solid{background:var(--brand);border-color:var(--brand);color:#fff}
+.btn.solid:hover{background:var(--brand-deep);border-color:var(--brand-deep);color:#fff}
+.btn.tiny{font-size:11px;padding:2px 8px}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* ── scenarios ──────────────────────────────────────────────────────── */
+.scen{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:22px 0 0}
+@media (max-width:760px){.scen{grid-template-columns:1fr}}
+.scen-card{
+  border:1px solid var(--line);border-left:3px solid var(--warn);
+  background:var(--surface);border-radius:4px;padding:16px 18px;box-shadow:var(--shadow);
+}
+.scen-card h4{margin:0 0 6px;font-size:14.5px;font-family:inherit;font-weight:700;color:var(--ink-strong)}
+.scen-card p{margin:0 0 12px;font-size:13px;color:var(--ink-soft)}
+.scen-card p b{color:var(--warn);font-weight:700}
+.scen-out{font-size:12px;color:var(--ink-faint);margin-top:9px;min-height:1.5em;font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+
+/* ── tabs + table ───────────────────────────────────────────────────── */
+.tabs{display:flex;gap:0;border-bottom:1px solid var(--line);margin:0}
+.tab{
+  font:inherit;font-size:13.5px;padding:10px 16px;background:none;border:0;
+  border-bottom:2px solid transparent;color:var(--ink-faint);cursor:pointer;margin-bottom:-1px;
+}
+.tab[aria-selected="true"]{color:var(--ink-strong);border-bottom-color:var(--brand);font-weight:500}
+.tab .c{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;font-size:12px;margin-left:6px;color:var(--ink-faint)}
+.tblwrap{overflow-x:auto;max-height:620px;overflow-y:auto;border-top:0}
+table{border-collapse:collapse;width:100%;font-size:13px;min-width:980px;table-layout:fixed}
+tbody td{word-break:break-word}
+thead th{
+  position:sticky;top:0;z-index:1;background:var(--brand-deep);color:#fff;
+  text-align:left;font-weight:500;font-size:12px;padding:8px 10px;white-space:nowrap;
+}
+tbody td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even){background:var(--zebra)}
+td.num{white-space:nowrap;text-align:right;font-size:12.5px}
+td.date{white-space:nowrap;font-size:12.5px}
+td.org{color:var(--ink-soft);font-size:12.5px}
+td.cat{color:var(--ink-soft);font-size:12px;white-space:normal;line-height:1.35;word-break:break-word}
+tbody tr.is-new{background:var(--warn-wash) !important;box-shadow:inset 3px 0 0 var(--warn)}
+.tag{
+  display:inline-block;font-size:10.5px;letter-spacing:.06em;padding:1px 6px;border-radius:999px;
+  border:1px solid var(--line-strong);color:var(--ink-soft);white-space:nowrap;margin:0 3px 2px 0;
+  font-family:"IBM Plex Mono",monospace;
+}
+.tag.a{background:var(--brand-wash);border-color:var(--brand-wash);color:var(--brand-ink)}
+.tag.b{background:var(--hit-wash);border-color:var(--hit-line);color:var(--hit)}
+.tag.x{background:var(--drop-wash);border-color:var(--drop-line);color:var(--drop)}
+.tag.w{background:var(--warn-wash);border-color:var(--warn-line);color:var(--warn)}
+.und{color:var(--ink-faint);font-style:normal}
+.grpsep td{
+  background:var(--canvas-2) !important;font-size:11.5px;letter-spacing:.06em;
+  color:var(--ink-soft);padding:5px 10px;font-family:"IBM Plex Mono",monospace;
+  position:sticky;top:29px;
+}
+.empty{padding:40px 20px;text-align:center;color:var(--ink-faint);font-size:13px}
+
+/* ── caveats / notes ────────────────────────────────────────────────── */
+.notes{margin:22px 0 0;padding:0;list-style:none}
+.notes li{
+  position:relative;padding:10px 14px 10px 34px;font-size:12.5px;color:var(--ink-soft);
+  border:1px dashed var(--line-strong);border-radius:4px;margin-bottom:8px;background:var(--canvas-2);
+}
+.notes li::before{
+  content:"!";position:absolute;left:12px;top:10px;
+  font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--warn);
+}
+.notes code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;background:var(--brand-wash);color:var(--brand-ink);padding:1px 4px;border-radius:2px}
+
+/* ── ② verify ───────────────────────────────────────────────────────── */
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+@media (max-width:700px){.vgrid{grid-template-columns:1fr}}
+.vcell{background:var(--surface);padding:18px 20px}
+.vcell .n{font-size:34px;font-weight:600;line-height:1;display:block;color:var(--ink-strong);font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.vcell.key{background:var(--hit-wash)}
+.vcell.key .n{color:var(--hit)}
+.vcell.extra .n{color:var(--warn)}
+.vcell .l{font-size:12.5px;color:var(--ink-soft);display:block;margin-top:6px}
+.vbody{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;margin-top:22px}
+@media (max-width:840px){.vbody{grid-template-columns:1fr}}
+.vbody h4{margin:0 0 8px;font-size:13.5px;font-family:inherit;color:var(--ink-strong)}
+.vlist{margin:0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.vlist li{border-bottom:1px solid var(--line);padding:7px 0;font-size:12.5px;color:var(--ink-soft)}
+.vlist li span{color:var(--ink-faint);font-family:"IBM Plex Mono",monospace;font-size:11px;margin-right:8px}
+.method{font-size:12.5px;color:var(--ink-soft);background:var(--canvas-2);border-left:3px solid var(--brand);padding:12px 14px;border-radius:0 4px 4px 0}
+.method b{color:var(--ink-strong)}
+
+/* ── 通用折疊區塊（②③④⑤ 的長篇細節都收在這裡，靜止時頁面只剩標題與數字） ── */
+details.disc{border:1px solid var(--line);border-radius:4px;background:var(--surface);margin-bottom:10px;box-shadow:var(--shadow)}
+details.disc>summary{
+  padding:13px 16px;cursor:pointer;list-style:none;display:grid;
+  grid-template-columns:minmax(0,1fr) auto auto;gap:12px;align-items:baseline;font-size:14px;
+}
+details.disc>summary::-webkit-details-marker{display:none}
+details.disc>summary:hover{background:var(--zebra)}
+details.disc>summary::after{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--ink-faint)}
+details.disc[open]>summary::after{content:"–"}
+details.disc[open]>summary{border-bottom:1px solid var(--line)}
+details.disc>summary b{font-weight:700;color:var(--ink-strong)}
+.claim{font-size:12px;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;white-space:nowrap}
+.disc-body{padding:16px 18px}
+.disc-body p{margin:0 0 10px;font-size:13px;color:var(--ink-soft);max-width:82ch}
+.disc-body p:last-child{margin-bottom:0}
+.disc-body code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;background:var(--canvas-2);padding:1px 4px;border-radius:2px}
+
+/* ── ADR 索引 ───────────────────────────────────────────────────────── */
+.adr-hd,details.adr>summary{
+  display:grid;grid-template-columns:2.4rem minmax(0,1fr) 8.5rem 8rem 1.2rem;
+  gap:10px;align-items:baseline;padding:8px 4px;font-size:13px;
+}
+.adr-hd{
+  font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-faint);
+  border-bottom:1px solid var(--line-strong);font-family:"IBM Plex Mono",monospace;
+}
+details.adr{border-bottom:1px solid var(--line)}
+details.adr>summary{cursor:pointer;list-style:none}
+details.adr>summary::-webkit-details-marker{display:none}
+details.adr>summary:hover{background:var(--zebra)}
+details.adr>summary::after{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--ink-faint);text-align:right}
+details.adr[open]>summary::after{content:"–"}
+.adr-id{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+.adr-body{padding:2px 4px 14px 3.1rem;font-size:12.5px;color:var(--ink-soft);max-width:80ch}
+.adr-body dt{font-size:10.5px;letter-spacing:.08em;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace;margin-top:8px}
+.adr-body dd{margin:2px 0 0}
+.adr-body dl{margin:0}
+.by{font-size:11px;font-family:"IBM Plex Mono",monospace;white-space:nowrap}
+.by.user{color:var(--ink-soft)}
+.by.me{color:var(--brand-ink)}
+.by.over{color:var(--warn);font-weight:600}
+.adr-st{font-size:11px;color:var(--ink-faint);font-family:"IBM Plex Mono",monospace;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:720px){
+  .adr-hd{display:none}
+  details.adr>summary{grid-template-columns:2.4rem minmax(0,1fr) 1.2rem;row-gap:2px}
+  details.adr>summary .by,details.adr>summary .adr-st{grid-column:2}
+  .adr-body{padding-left:2.4rem}
+}
+
+/* ── 三層驗證 ───────────────────────────────────────────────────────── */
+.layers{border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--surface)}
+.layer{display:grid;grid-template-columns:5.5rem minmax(0,1fr);gap:14px;padding:14px 16px;border-bottom:1px solid var(--line)}
+.layer:last-child{border-bottom:0}
+.layer .lv{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--brand-ink);font-weight:600}
+.layer h5{margin:0 0 4px;font-size:13.5px;font-family:inherit;color:var(--ink-strong);font-weight:700}
+.layer p{margin:0;font-size:12.5px;color:var(--ink-soft)}
+.layer .res{margin-top:6px;font-size:12.5px;color:var(--hit);font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.teach{
+  margin:14px 0 0;padding:14px 16px;border-left:3px solid var(--warn);background:var(--warn-wash);
+  border-radius:0 4px 4px 0;font-size:13px;color:var(--ink);
+}
+.teach b{color:var(--ink-strong)}
+
+/* ── 排程做法表 ─────────────────────────────────────────────────────── */
+.sched{width:100%;border-collapse:collapse;font-size:12.5px;min-width:0;table-layout:auto}
+.sched th{background:transparent;color:var(--ink-faint);position:static;font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;padding:6px 8px 6px 0;border-bottom:1px solid var(--line-strong);font-family:"IBM Plex Mono",monospace}
+.sched td{padding:8px 8px 8px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink-soft)}
+.sched tr:nth-child(even){background:transparent}
+.sched td.m{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-strong);white-space:nowrap}
+.ok{color:var(--hit);font-weight:600;white-space:nowrap}
+.no{color:var(--warn);font-weight:600;white-space:nowrap}
+.pick{
+  border:1px solid var(--hit-line);background:var(--hit-wash);border-radius:4px;padding:14px 16px;margin:0 0 14px;
+}
+.pick h5{margin:0 0 8px;font-size:13px;font-family:inherit;color:var(--hit);font-weight:700}
+.pick ul{margin:8px 0 0}
+.pick li{border-bottom:0;padding:2px 0 2px 16px}
+
+/* ── ③ traps ────────────────────────────────────────────────────────── */
+.traps{border-top:1px solid var(--line)}
+details.trap{border-bottom:1px solid var(--line)}
+details.trap>summary{
+  padding:12px 4px;cursor:pointer;list-style:none;display:grid;
+  grid-template-columns:auto minmax(0,1fr) auto auto;gap:12px;align-items:baseline;font-size:14px;
+}
+details.trap>summary::-webkit-details-marker{display:none}
+details.trap>summary:hover{color:var(--brand-ink)}
+details.trap .idx{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink-faint);font-variant-numeric:tabular-nums}
+details.trap>summary::after{content:"+";font-family:"IBM Plex Mono",monospace;color:var(--ink-faint)}
+details.trap[open]>summary::after{content:"–"}
+.trap-body{padding:0 4px 16px 40px;font-size:13px;color:var(--ink-soft);max-width:82ch}
+.trap-body p{margin:0 0 8px}
+.trap-body code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;background:var(--canvas-2);padding:1px 4px;border-radius:2px}
+.st{font-size:10.5px;letter-spacing:.06em;padding:1px 7px;border-radius:999px;font-family:"IBM Plex Mono",monospace;white-space:nowrap}
+.st.done{background:var(--hit-wash);color:var(--hit);border:1px solid var(--hit-line)}
+.st.open{background:var(--warn-wash);color:var(--warn);border:1px solid var(--warn-line)}
+.trap-split{display:flex;align-items:center;gap:12px;margin:26px 0 4px;color:var(--ink-faint);font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-family:"IBM Plex Mono",monospace}
+.trap-split::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ── ④ portability ─────────────────────────────────────────────────── */
+.port{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+@media (max-width:820px){.port{grid-template-columns:1fr}}
+.port>div{background:var(--surface);padding:20px 22px}
+.port h4{margin:0 0 12px;font-size:14px;font-family:inherit;color:var(--ink-strong)}
+pre.cmd{
+  margin:0 0 8px;padding:9px 11px;background:var(--canvas-2);border:1px solid var(--line);
+  border-radius:3px;overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--ink);
+}
+.port ul{margin:10px 0 0;padding:0;list-style:none}
+.port li{font-size:12.5px;color:var(--ink-soft);padding:5px 0 5px 16px;position:relative;border-bottom:1px solid var(--line)}
+.port li:last-child{border-bottom:0}
+.port li::before{content:"—";position:absolute;left:0;color:var(--ink-faint)}
+.port li b{color:var(--ink-strong);font-weight:500}
+.port li code{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--brand-ink)}
+.kicker{
+  margin:22px 0 0;padding:16px 20px;background:var(--brand);color:#fff;border-radius:4px;
+  font-family:"Noto Serif TC",Georgia,serif;font-size:clamp(16px,2vw,21px);font-weight:700;text-align:center;
+}
+
+/* ── footer ─────────────────────────────────────────────────────────── */
+footer{padding:34px 0 48px;font-size:12.5px;color:var(--ink-faint)}
+footer p{margin:0 0 6px;max-width:80ch}
+footer a{color:var(--link)}
+.prov{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--ink-faint);margin-top:14px;padding-top:12px;border-top:1px solid var(--line)}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
+</style>
+
+<div class="top" style="position:relative">
+  <button class="themebtn" id="theme-btn" type="button" aria-label="切換亮暗色">亮／暗</button>
+  <div class="wrap top-in">
+    <p class="eyebrow">某媒體代理商 · 媒體中心 · 政府標案每日監控</p>
+    <h1>公標網規則實驗室</h1>
+    <p class="thesis"><b>1787 筆當日公告，如何收斂成 35 筆值得看的標案。</b>下面的過濾器不是示意圖：它跑的是 <code style="font-family:'IBM Plex Mono',monospace;font-size:.9em">src/select.js</code> 與 <code style="font-family:'IBM Plex Mono',monospace;font-size:.9em">src/workbook.js</code> 的同一份原始碼，資料是 2026-08-17 的真實擷取。改規則，數字就跟著動。</p>
+    <div class="stats">
+      <div class="stat"><span class="stat-n">1787</span><span class="stat-l">當日公告</span></div>
+      <div class="stat is-hit"><span class="stat-n">35</span><span class="stat-l">命中</span></div>
+      <div class="stat is-drop"><span class="stat-n">27</span><span class="stat-l">已排除</span></div>
+      <div class="stat is-zero"><span class="stat-n">0</span><span class="stat-l">漏報（對客戶範本）</span></div>
+    </div>
+  </div>
+</div>
+
+<main>
+<!-- ① ───────────────────────────────────────────────────────────────── -->
+<section id="lab">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">1</span><h2>規則實驗室</h2></div>
+    <p class="sec-sub">左邊改規則，右邊即時重跑。四層漏斗依比例繪製 —— 那個坍縮本身就是重點：白名單砍掉一半，兩路命中再砍到 3.5%，排除清單收尾。</p>
+
+    <div class="fx" id="funnel"></div>
+
+    <div class="scen">
+      <div class="scen-card">
+        <h4>情境一：關掉 3 條校外教學排除詞</h4>
+        <p>把 <code style="font-family:'IBM Plex Mono',monospace;font-size:.92em">戶外教育活動</code> / <code style="font-family:'IBM Plex Mono',monospace;font-size:.92em">校外教學</code> / <code style="font-family:'IBM Plex Mono',monospace;font-size:.92em">戶外教育</code> 三條關掉。這三條目前擋下 <b>16 筆</b>國中小校外教學案 —— 它們都命中了 C 組「活動」關鍵字，卻不是媒體採購。<b>證明排除清單是必要的。</b></p>
+        <button class="btn solid" id="scen-1" type="button">跑這個情境</button>
+        <div class="scen-out" id="scen-1-out"></div>
+      </div>
+      <div class="scen-card">
+        <h4>情境二：關掉「畢業紀念冊」</h4>
+        <p>只關這一條。回來的 3 筆<b>全部走路 A</b> —— 是政府自己把它們歸類為 <code style="font-family:'IBM Plex Mono',monospace;font-size:.92em">勞務類875-攝影服務</code>。<b>排除清單能蓋掉官方分類</b>，也就是它可能訂得太寬：畢冊確實是攝影採購，客戶不想看而已。這個張力沒有正確答案，只能問客戶。</p>
+        <button class="btn solid" id="scen-2" type="button">跑這個情境</button>
+        <div class="scen-out" id="scen-2-out"></div>
+      </div>
+    </div>
+
+    <div class="lab">
+      <!-- rules -->
+      <div class="panel" id="rules-panel">
+        <div class="panel-hd">
+          <h3>規則</h3>
+          <button class="btn tiny" id="reset-btn" type="button">回到預設</button>
+        </div>
+        <details class="grp" open>
+          <summary>公告類型<span class="grp-n" id="n-types"></span></summary>
+          <div class="grp-body" id="box-types"></div>
+        </details>
+        <details class="grp" open>
+          <summary>標的分類（路 A）<span class="grp-n" id="n-cats"></span></summary>
+          <div class="grp-body" id="box-cats"></div>
+        </details>
+        <details class="grp" open>
+          <summary>關鍵字（路 B）<span class="grp-n" id="n-kw"></span></summary>
+          <div class="grp-body" id="box-kw"></div>
+        </details>
+        <details class="grp">
+          <summary>排除清單<span class="grp-n" id="n-ex"></span></summary>
+          <div class="grp-body">
+            <div style="display:flex;gap:6px;margin-bottom:10px">
+              <button class="btn tiny" id="ex-none" type="button">全部關閉</button>
+              <button class="btn tiny" id="ex-all" type="button">全部開啟</button>
+            </div>
+            <div class="chips" id="box-ex"></div>
+          </div>
+        </details>
+      </div>
+
+      <!-- results -->
+      <div class="panel">
+        <div class="panel-hd" style="border-bottom:0;padding-bottom:0">
+          <div class="tabs" role="tablist" style="border-bottom:0;margin-bottom:-1px">
+            <button class="tab" role="tab" id="tab-hit" aria-selected="true" aria-controls="pane-hit">命中<span class="c" id="c-hit"></span></button>
+            <button class="tab" role="tab" id="tab-ex" aria-selected="false" aria-controls="pane-ex">已排除<span class="c" id="c-ex"></span></button>
+          </div>
+          <button class="btn" id="dl-btn" type="button" hidden>下載 .xlsx</button>
+        </div>
+        <div class="tblwrap" style="border-top:1px solid var(--line)">
+          <div id="pane-hit" role="tabpanel" aria-labelledby="tab-hit"></div>
+          <div id="pane-ex" role="tabpanel" aria-labelledby="tab-ex" hidden></div>
+        </div>
+        <div style="padding:8px 14px;border-top:1px solid var(--line);font-size:11.5px;color:var(--ink-faint)" class="mono" id="dl-note">已排除分頁依排除詞分組，同一條詞的受害者排在一起 —— 一眼就能判斷某條詞是不是訂得太寬。</div>
+      </div>
+    </div>
+
+    <ul class="notes">
+      <li>資料為 2026-08-17 真實擷取；<b>只預先取得了預設規則下命中與排除的 62 筆的細查資料</b>。放寬規則後新出現的標案，預算與截止投標會顯示「未擷取」—— 不是 0，也不猜。</li>
+      <li>本頁<b>不即時連線政府採購網</b>（發布後的頁面無法對外連線），但過濾與產表跑的是 <code>src/select.js</code>、<code>src/workbook.js</code> 的同一份原始碼，由 <code>scripts/build-web.js</code> 原樣嵌入 —— 89 條測試固定的就是這段程式碼的行為。</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ② ───────────────────────────────────────────────────────────────── -->
+<section id="verify">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">2</span><h2>驗收：與客戶範本並排比對</h2></div>
+    <p class="sec-sub">客戶提供了他們自己 2026-08-17 的實際工作簿。用同一天的真實資料跑完整流程，兩份 Excel 做集合比對。</p>
+
+    <div class="vgrid">
+      <div class="vcell key"><span class="n">0</span><span class="l"><b>範本有、我們漏掉</b> —— 唯一真正重要的數字</span></div>
+      <div class="vcell"><span class="n">30</span><span class="l">範本有、我們也有</span></div>
+      <div class="vcell extra"><span class="n">5</span><span class="l">我們有、範本沒有</span></div>
+    </div>
+
+    <div style="margin-top:22px">
+      <details class="disc">
+        <summary><b>那 5 筆多出來的，全是同一種公告類型</b><span class="claim">該類型在客戶範本出現 0 次</span></summary>
+        <div class="disc-body">
+          <p>五筆都是<b style="color:var(--warn)">「公開徵求廠商提供參考資料公告」</b>。而這種類型在客戶自己的工作簿裡出現 <b class="mono" style="color:var(--warn)">0</b> 次 —— 規格白名單收了一種他們實際的人工流程從來不收的公告類型。這不是我們多抓，是規格與現況不一致。</p>
+          <ul class="vlist">
+            <li><span>01</span>廣播節目編播系統維護</li>
+            <li><span>02</span>115學年度高三戶外教學採購案</li>
+            <li><span>03</span>網路設備配件(廠牌:MOXA)</li>
+            <li><span>04</span>116年度網路系統暨虛擬化平台維護案</li>
+            <li><span>05</span>台北處加油站GPS網路校時器75台購置</li>
+          </ul>
+          <p style="margin-top:10px">移除這兩種公告類型後命中數從 35 收斂到 30，與客戶範本完全一致 —— 但那是要問客戶的事，不是我們自己改掉的事。</p>
+        </div>
+      </details>
+      <details class="disc">
+        <summary><b>零漏報是怎麼驗的</b><span class="claim">同一天真實資料 · 集合比對</span></summary>
+        <div class="disc-body">
+          <p>用同一天真實資料跑完整流程，抽出兩份 Excel 的<b>標案名稱</b>做集合比對。</p>
+          <p>過程中發現一件規格沒提的情況：<b>同一個標案在同一天可能同時有「招標公告」與「無法決標公告」兩筆</b>（8/17 有兩件）。公告類型白名單正確地只留下招標那筆 —— 這不是巧合，是白名單放在漏斗第一層的副作用。</p>
+          <p><code>npm run verify</code> 把這件事變成可重複執行的測試，不是一次性的人工核對。方法本身見下一節。</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ③ ───────────────────────────────────────────────────────────────── -->
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">3</span><h2>方法：我們怎麼做出這條流程</h2></div>
+    <p class="sec-sub">三件事：資料從哪裡來、決策是誰做的、憑什麼相信輸出是對的。</p>
+
+    <details class="disc" id="disc-source">
+      <summary><b>資料源的選擇 —— openfun API 還是自己爬 web.pcc.gov.tw</b><span class="claim" id="src-claim">實驗進行中</span></summary>
+      <div class="disc-body" id="src-body"></div>
+    </details>
+
+    <details class="disc">
+      <summary><b>14 則架構決策（ADR）</b><span class="claim">決策者分成 使用者拍板 / 我逕行決定 / 我推翻客戶規格</span></summary>
+      <div class="disc-body">
+        <p style="margin-bottom:12px">這個專案從空目錄開始，以下是實作過程中真正做過的決策。<b>「決策者」那一欄才是重點</b> —— 它把「客戶說的」、「我自己決定的」、「我推翻客戶規格的」分開標示。點任一列展開該則的決策與理由。</p>
+        <div class="adr-hd"><span>#</span><span>決策</span><span>決策者</span><span>狀態</span><span></span></div>
+        <div id="adr-list"></div>
+      </div>
+    </details>
+
+    <details class="disc">
+      <summary><b>怎麼確保資料正確 —— 三層驗證</b><span class="claim">89 條測試 · 零漏報 · 87 列逐欄重播</span></summary>
+      <div class="disc-body">
+        <div class="layers">
+          <div class="layer">
+            <span class="lv">第一層</span>
+            <div>
+              <h5>89 條單元測試</h5>
+              <p>每個規則變成一條斷言，含刻意寫下的誤殺案例（例如「台中市OO活動中心啟用晚會宣傳影片製作」會被「活動中心」擋下）。</p>
+            </div>
+          </div>
+          <div class="layer">
+            <span class="lv">第二層</span>
+            <div>
+              <h5>客戶範本當 ground truth</h5>
+              <p>同一天真實資料跑完整流程，兩份 Excel 的標案名稱做集合比對。</p>
+              <p class="res">→ 範本 30 筆全部命中，零漏報</p>
+            </div>
+          </div>
+          <div class="layer">
+            <span class="lv">第三層</span>
+            <div>
+              <h5>黃金檔離線重播</h5>
+              <p><code>npm run verify</code> 用已擷取的真實資料離線重播完整流程，逐欄比對 87 列。</p>
+              <p class="res">→「別人的機器產出是否相同」變成會過或會失敗的測試</p>
+            </div>
+          </div>
+        </div>
+        <p class="teach"><b>ground truth 必須來自實作之外。</b>用自己的實作產生期望值，等於自己出題自己改 —— 只能驗證程式沒變，不能驗證程式正確。客戶手動查出來的那份 Excel 是唯一的外部基準。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ④ ───────────────────────────────────────────────────────────────── -->
+<section id="gaps">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">4</span><h2>從規格裡挖出來的陷阱</h2></div>
+    <p class="sec-sub">比對三份來源：客戶需求規格、客戶提供的實際輸出範本、政府採購網 API 的實測行為。處理原則是<b>範本優先於規格</b>（範本是客戶手上真正在用的東西），<b>API 的實測行為是事實</b>（API 做不到的，規格再怎麼寫也沒用）。點標題展開細節。</p>
+
+    <div class="trap-split">已在實作中處理 · 7 項</div>
+    <div class="traps" id="traps-done"></div>
+
+    <div class="trap-split">需要客戶確認 · 7 項</div>
+    <div class="traps" id="traps-open"></div>
+  </div>
+</section>
+
+<!-- ④ ───────────────────────────────────────────────────────────────── -->
+<section id="portable">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-no">5</span><h2>任務二：搬到別人的機器上</h2></div>
+    <p class="sec-sub">兩件事要分開講：怎麼裝得起來，以及怎麼排程。</p>
+    <div class="port">
+      <div>
+        <h4>裝得起來（兩條路都實測可用）</h4>
+        <pre class="cmd">npx skills add fredrick84823/gov-tender-monitor</pre>
+        <pre class="cmd">claude plugin marketplace add fredrick84823/gov-tender-monitor</pre>
+        <ul>
+          <li><b>可重現性是一個測試，不是一段說明。</b></li>
+          <li><code>npm run verify</code> —— 離線重播已擷取的真實資料，逐格比對 <b>87 列</b>。</li>
+          <li><code>npm run doctor</code> —— 檢查 <b>6 項</b>環境前提，缺什麼直接講。</li>
+        </ul>
+      </div>
+      <div>
+        <h4>怎麼排程</h4>
+        <div class="pick">
+          <h5>作業系統排程（cron / launchd）—— 這是可行的做法</h5>
+          <pre class="cmd">10 16 * * 1-5  cd /path/to/gov-tender-monitor &amp;&amp; npm run report</pre>
+          <ul>
+            <li>準時（由作業系統保證）· 檔案落本機 · 失敗有非零 exit code · 無憑證過期 · 零 LLM 成本</li>
+          </ul>
+        </div>
+        <details class="disc" style="margin-bottom:0">
+          <summary><b>其他六種機制：可行的與各自的限制</b><span class="claim">逐項對照官方文件查證</span></summary>
+          <div class="disc-body" style="padding:12px 0 0">
+            <div style="overflow-x:auto">
+              <table class="sched">
+                <thead><tr><th>機制</th><th>可行？</th><th>限制</th></tr></thead>
+                <tbody>
+                  <tr><td class="m">claude -p + OS 排程</td><td class="ok">可行</td><td>但真正在排程的是 cron；且長效 token 效期一年，到期後排程開始失敗。</td></tr>
+                  <tr><td class="m">/schedule routines</td><td class="ok">可行</td><td>唯一不需要你的機器開著。但跑在雲端、每次重新 clone repo，xlsx 落在雲端不在本機磁碟，也讀不到未 commit 的收件人清單。</td></tr>
+                  <tr><td class="m">/loop</td><td class="no">不行</td><td>session 內計時器，終端機關掉就停。16:10 筆電在睡 → 不執行，也不報錯。</td></tr>
+                  <tr><td class="m">CronCreate</td><td class="no">不行</td><td>session-only、in-memory、7 天自動失效（<code>durable</code> 參數存在但標示無效）。</td></tr>
+                  <tr><td class="m">hooks</td><td class="no">不行</td><td>30 幾種事件沒有一個是時間驅動的。</td></tr>
+                  <tr><td class="m">自訂 slash command</td><td class="no">不行</td><td>只在訊息開頭被辨識，只有人打字才會觸發。</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <p style="margin:12px 0 0;font-size:12.5px;color:var(--ink-soft)">更根本的原因：<b>這條管線裡沒有 LLM</b>。<code>select</code>、<code>enrich</code>、<code>buildWorkbook</code> 都是純函式，89 條測試固定其行為，同一天的輸入必然得到同一份輸出 —— 沒有需要判斷的環節。</p>
+          </div>
+        </details>
+      </div>
+    </div>
+    <p class="kicker">排程給作業系統，判斷給模型。</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p><b style="color:var(--ink)">公標網 —— 政府標案每日監控</b> · <a href="https://github.com/fredrick84823/gov-tender-monitor" target="_blank" rel="noopener">github.com/fredrick84823/gov-tender-monitor</a></p>
+    <p>資料來源：政府電子採購網公開資料，經開放文化基金會維運的介面取得。</p>
+    <p class="prov">客戶身分已去識別化。本頁的過濾與產表跑的是 repo 內 src/ 的同一份原始碼，由 scripts/build-web.js 嵌入。</p>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.4.0/exceljs.min.js"></script>
+
+<!-- ─────────────────────────────────────────────────────────────────────
+     以下由 scripts/build-web.js 置換：src/dates.js + src/select.js +
+     src/workbook.js 的原始碼，只拆掉 ESM 的 export / import，其餘逐字元不動。
+     重點在「可證明跑的是同一份程式碼」—— 89 條測試覆蓋的就是這段，
+     所以頁面上的漏斗數字與 test/ 對不上時，那是 bug，不是示意圖畫得不夠像。
+     ExcelJS 由上面的 CDN 提供 window.ExcelJS。
+     ───────────────────────────────────────────────────────────────────── -->
+<script>
+/*__PIPELINE__*/
+</script>
+
+<!--__DATA__-->
+
+<script>
+(function () {
+  'use strict';
+
+  // ── 資料與規則 ────────────────────────────────────────────────────
+  var DEMO = JSON.parse(document.getElementById('demo-data').textContent);
+  var DATE = '20260817';
+  var DAY = DEMO.days[DATE];
+  var RECORDS = DAY.records;
+  var DETAILS = DAY.details;
+  var DEFAULTS = DEMO.rules;
+  var UND = '未公開';
+  var NOFETCH = '未擷取';
+
+  function clone(x) { return JSON.parse(JSON.stringify(x)); }
+
+  // 可編輯狀態：保留完整預設清單，另記「哪些被關掉」，這樣順序永遠等於預設順序
+  var state = {
+    types: new Set(DEFAULTS.announcementTypes),
+    cats: new Set(DEFAULTS.categories.map(function (c) { return c.code; })),
+    groups: clone(DEFAULTS.keywordGroups),
+    exOff: new Set(),
+  };
+
+  function activeRules() {
+    return {
+      source: DEFAULTS.source,
+      procurementNature: DEFAULTS.procurementNature,
+      categories: DEFAULTS.categories.filter(function (c) { return state.cats.has(c.code); }),
+      announcementTypes: DEFAULTS.announcementTypes.filter(function (t) { return state.types.has(t); }),
+      keywordGroups: state.groups,
+      titleExclusions: DEFAULTS.titleExclusions.filter(function (t) { return !state.exOff.has(t); }),
+      sendWhenEmpty: DEFAULTS.sendWhenEmpty,
+    };
+  }
+
+  var last = null;          // 上一次 select() 的結果
+  var highlight = new Set(); // 情境按鈕造成的新增列
+
+  // ── helpers ──────────────────────────────────────────────────────
+  function el(tag, cls, txt) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (txt != null) n.textContent = txt;
+    return n;
+  }
+  function fmtInt(n) { return String(n); }
+  function detailOf(r) { return DETAILS[r.filename] || null; }
+  function linkOf(item) {
+    var d = detailOf(item.record);
+    if (d && d.pkPmsMain) {
+      return 'https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=' + d.pkPmsMain;
+    }
+    return item.tenderUrl;   // 由 select.js 的 tenderUrlFor 組出
+  }
+
+  // ── 漏斗 ─────────────────────────────────────────────────────────
+  function renderFunnel(res, rules) {
+    var total = RECORDS.length;
+    var allowed = {};
+    rules.announcementTypes.forEach(function (t) { allowed[t] = 1; });
+    var pass = 0;
+    for (var i = 0; i < RECORDS.length; i++) {
+      var b = RECORDS[i].brief || {};
+      if (b.type && b.title && allowed[b.type]) pass++;
+    }
+    var deduped = res.selected.length + res.excluded.length;
+    var hit = res.selected.length;
+    var dropped = res.excluded.length;
+
+    var rows = [
+      { n: total, w: 100, cls: '', cap: '當日全部公告' },
+      { n: pass, w: pass / total * 100, cls: '', cap: '過公告類型白名單（' + rules.announcementTypes.length + ' 種招標類）' },
+      { n: deduped, w: deduped / total * 100, cls: '', cap: '兩路命中並以 filename 去重' },
+      { n: hit, w: hit / total * 100, cls: 'is-hit', cap: '扣掉 ' + rules.titleExclusions.length + ' 條排除清單', ghost: dropped / total * 100, ghostCap: dropped + ' 被排除' },
+    ];
+
+    var box = document.getElementById('funnel');
+    box.textContent = '';
+    var t = el('p', 'fx-title', '漏斗 — 依比例繪製 · 2026-08-17');
+    box.appendChild(t);
+
+    rows.forEach(function (r) {
+      var row = el('div', 'fx-row');
+      row.appendChild(el('div', 'fx-n', fmtInt(r.n)));
+      var cell = el('div', 'fx-bar-cell');
+      var track = el('div', 'fx-track');
+      var fill = el('div', 'fx-fill' + (r.cls ? ' ' + r.cls : ''));
+      fill.style.width = Math.max(r.w, 0.18) + '%';
+      track.appendChild(fill);
+      if (r.ghost != null && r.ghost > 0) {
+        var g = el('div', 'fx-fill is-drop');
+        g.style.width = r.ghost + '%';
+        track.appendChild(g);
+      }
+      cell.appendChild(track);
+      var cap = el('div', 'fx-cap');
+      cap.appendChild(document.createTextNode(r.cap));
+      if (r.ghostCap) {
+        cap.appendChild(document.createTextNode('　'));
+        var em = el('em', null, r.ghostCap);
+        cap.appendChild(em);
+      }
+      cell.appendChild(cap);
+      row.appendChild(cell);
+      box.appendChild(row);
+    });
+
+    var lg = el('div', 'fx-legend');
+    [['var(--brand)', '通過該層'], ['var(--hit)', '最終命中'], ['var(--drop)', '被排除清單擋下']].forEach(function (p) {
+      var s = el('span');
+      var sw = el('span', 'sw');
+      sw.style.background = p[0];
+      if (p[0] === 'var(--drop)') sw.style.opacity = '.55';
+      s.appendChild(sw);
+      s.appendChild(document.createTextNode(p[1]));
+      lg.appendChild(s);
+    });
+    box.appendChild(lg);
+  }
+
+  // ── 表格 ─────────────────────────────────────────────────────────
+  var HIT_COLS = ['機關', '標案名稱', '截止投標', '預算金額', '標的分類', '命中組'];
+  var EX_COLS = ['機關', '標案名稱', '截止投標', '預算金額', '標的分類', '原本命中', '被哪一條擋下'];
+  var HIT_W = ['18%', '28%', '13%', '11%', '15%', '15%'];
+  var EX_W = ['15%', '23%', '12%', '10%', '14%', '12%', '14%'];
+
+  function undCell(text, cls) {
+    var td = el('td', cls);
+    if (text === UND || text === NOFETCH) {
+      td.appendChild(el('span', 'und', text));
+    } else {
+      td.textContent = text;
+    }
+    return td;
+  }
+
+  function titleCell(item) {
+    var td = el('td');
+    var a = el('a', null, item.record.brief.title);
+    a.href = linkOf(item);
+    a.target = '_blank';
+    a.rel = 'noopener';
+    td.appendChild(a);
+    if (item.isCorrection) {
+      var t = el('span', 'tag w', '更正');
+      td.appendChild(document.createTextNode(' '));
+      td.appendChild(t);
+    }
+    return td;
+  }
+
+  function dataCells(item, tr) {
+    var d = detailOf(item.record);
+    tr.appendChild(undCell(item.record.unit_name || UND, 'org'));
+    tr.appendChild(titleCell(item));
+    // 截止投標 / 預算：只有預設規則下的 62 筆有細查資料
+    if (!d) {
+      tr.appendChild(undCell(NOFETCH, 'date'));
+      tr.appendChild(undCell(NOFETCH, 'num'));
+    } else {
+      tr.appendChild(undCell(rocToIso(d.deadline) || UND, 'date'));
+      tr.appendChild(undCell(d.budgetPublic ? (d.budget || UND) : UND, 'num'));
+    }
+    var cat = (item.record.brief && item.record.brief.category) || (d && d.category) || UND;
+    tr.appendChild(undCell(cat, 'cat'));
+  }
+
+  function pathTags(item) {
+    var td = el('td');
+    (item.matchedPaths || []).forEach(function (p) {
+      td.appendChild(el('span', 'tag ' + (p === 'A' ? 'a' : 'b'), '路 ' + p));
+    });
+    (item.matchedGroups || []).forEach(function (g) {
+      var grp = state.groups.filter(function (x) { return x.id === g; })[0];
+      td.appendChild(el('span', 'tag', g + ' ' + (grp ? grp.label : '')));
+    });
+    if (!td.childNodes.length) td.appendChild(el('span', 'und', '—'));
+    return td;
+  }
+
+  function buildTable(cols, widths) {
+    var tbl = el('table');
+    if (widths) {
+      var cg = el('colgroup');
+      widths.forEach(function (w) {
+        var c = el('col');
+        c.style.width = w;
+        cg.appendChild(c);
+      });
+      tbl.appendChild(cg);
+    }
+    var thead = el('thead');
+    var tr = el('tr');
+    cols.forEach(function (c) { tr.appendChild(el('th', null, c)); });
+    thead.appendChild(tr);
+    tbl.appendChild(thead);
+    tbl.appendChild(el('tbody'));
+    return tbl;
+  }
+
+  function renderHits(res) {
+    var pane = document.getElementById('pane-hit');
+    pane.textContent = '';
+    if (!res.selected.length) {
+      pane.appendChild(el('div', 'empty', '目前規則下沒有任何標案命中。（把公告類型或關鍵字打開試試）'));
+      return;
+    }
+    var tbl = buildTable(HIT_COLS, HIT_W);
+    var tb = tbl.querySelector('tbody');
+    res.selected.forEach(function (item) {
+      var tr = el('tr');
+      if (highlight.has(item.record.filename)) tr.className = 'is-new';
+      dataCells(item, tr);
+      tr.appendChild(pathTags(item));
+      tb.appendChild(tr);
+    });
+    pane.appendChild(tbl);
+  }
+
+  function renderExcluded(res) {
+    var pane = document.getElementById('pane-ex');
+    pane.textContent = '';
+    if (!res.excluded.length) {
+      pane.appendChild(el('div', 'empty', '目前規則下沒有任何標案被排除清單擋下。'));
+      return;
+    }
+    // 與 workbook.js 的已排除分區同一套排序：先排除詞、再標案名稱
+    var sorted = res.excluded.slice().sort(function (a, b) {
+      return a.exclusionTerm.localeCompare(b.exclusionTerm, 'zh-Hant') ||
+        a.record.brief.title.localeCompare(b.record.brief.title, 'zh-Hant');
+    });
+    var tbl = buildTable(EX_COLS, EX_W);
+    var tb = tbl.querySelector('tbody');
+    var cur = null;
+    sorted.forEach(function (item) {
+      if (item.exclusionTerm !== cur) {
+        cur = item.exclusionTerm;
+        var n = sorted.filter(function (x) { return x.exclusionTerm === cur; }).length;
+        var sep = el('tr', 'grpsep');
+        var td = el('td', null, '排除詞「' + cur + '」— ' + n + ' 筆');
+        td.colSpan = EX_COLS.length;
+        sep.appendChild(td);
+        tb.appendChild(sep);
+      }
+      var tr = el('tr');
+      dataCells(item, tr);
+      tr.appendChild(pathTags(item));
+      tr.appendChild(el('td', null, item.exclusionTerm));
+      tb.appendChild(tr);
+    });
+    pane.appendChild(tbl);
+  }
+
+  // ── 規則面板 ──────────────────────────────────────────────────────
+  function renderPanel() {
+    // 公告類型
+    var bt = document.getElementById('box-types');
+    bt.textContent = '';
+    DEFAULTS.announcementTypes.forEach(function (t) {
+      var on = state.types.has(t);
+      var lab = el('label', 'chk' + (on ? ' on' : ''));
+      var cb = el('input');
+      cb.type = 'checkbox';
+      cb.checked = on;
+      cb.addEventListener('change', function () {
+        if (cb.checked) state.types.add(t); else state.types.delete(t);
+        run();
+      });
+      lab.appendChild(cb);
+      lab.appendChild(document.createTextNode(t));
+      bt.appendChild(lab);
+    });
+    document.getElementById('n-types').textContent = state.types.size + '/' + DEFAULTS.announcementTypes.length;
+
+    // 標的分類
+    var bc = document.getElementById('box-cats');
+    bc.textContent = '';
+    DEFAULTS.categories.forEach(function (c) {
+      var on = state.cats.has(c.code);
+      var lab = el('label', 'chk' + (on ? ' on' : ''));
+      var cb = el('input');
+      cb.type = 'checkbox';
+      cb.checked = on;
+      cb.addEventListener('change', function () {
+        if (cb.checked) state.cats.add(c.code); else state.cats.delete(c.code);
+        run();
+      });
+      lab.appendChild(cb);
+      var s = el('span');
+      s.appendChild(el('span', 'mono', c.code));
+      s.appendChild(document.createTextNode(' ' + c.name));
+      lab.appendChild(s);
+      bc.appendChild(lab);
+    });
+    document.getElementById('n-cats').textContent = state.cats.size + '/' + DEFAULTS.categories.length;
+
+    // 關鍵字組
+    var bk = document.getElementById('box-kw');
+    bk.textContent = '';
+    var kwTotal = 0;
+    state.groups.forEach(function (g) {
+      kwTotal += g.keywords.length;
+      var head = el('div');
+      head.style.cssText = 'font-size:12px;color:var(--ink-faint);margin:10px 0 5px;font-family:"IBM Plex Mono",monospace';
+      head.textContent = g.id + ' 組 · ' + g.label + ' · ' + g.keywords.length;
+      bk.appendChild(head);
+      var chips = el('div', 'chips');
+      g.keywords.forEach(function (k) {
+        var chip = el('span', 'chip');
+        chip.appendChild(document.createTextNode(k));
+        var x = el('button', null, '×');
+        x.type = 'button';
+        x.setAttribute('aria-label', '移除關鍵字 ' + k);
+        x.addEventListener('click', function () {
+          g.keywords = g.keywords.filter(function (v) { return v !== k; });
+          renderPanel();
+          run();
+        });
+        chip.appendChild(x);
+        chips.appendChild(chip);
+      });
+      bk.appendChild(chips);
+      var row = el('div', 'addrow');
+      var inp = el('input');
+      inp.type = 'text';
+      inp.placeholder = '新增 ' + g.id + ' 組關鍵字';
+      inp.setAttribute('aria-label', '新增 ' + g.id + ' 組關鍵字');
+      var add = el('button', 'btn tiny', '加入');
+      add.type = 'button';
+      function doAdd() {
+        var v = inp.value.trim();
+        if (!v || g.keywords.indexOf(v) >= 0) { inp.value = ''; return; }
+        g.keywords.push(v);
+        renderPanel();
+        run();
+      }
+      add.addEventListener('click', doAdd);
+      inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); doAdd(); } });
+      row.appendChild(inp);
+      row.appendChild(add);
+      bk.appendChild(row);
+    });
+    document.getElementById('n-kw').textContent = kwTotal + ' 詞 / 4 組';
+
+    // 排除清單
+    var bx = document.getElementById('box-ex');
+    bx.textContent = '';
+    DEFAULTS.titleExclusions.forEach(function (t) {
+      var on = !state.exOff.has(t);
+      var chip = el('button', 'chip tog ' + (on ? 'on' : 'off'), t);
+      chip.type = 'button';
+      chip.setAttribute('aria-pressed', on ? 'true' : 'false');
+      chip.dataset.term = t;
+      chip.addEventListener('click', function () {
+        if (state.exOff.has(t)) state.exOff.delete(t); else state.exOff.add(t);
+        highlight = new Set();
+        renderPanel();
+        run();
+      });
+      bx.appendChild(chip);
+    });
+    document.getElementById('n-ex').textContent =
+      (DEFAULTS.titleExclusions.length - state.exOff.size) + '/' + DEFAULTS.titleExclusions.length + ' 啟用';
+  }
+
+  // ── 主迴圈 ────────────────────────────────────────────────────────
+  function run() {
+    var rules = activeRules();
+    var res = select(RECORDS, rules);     // ← src/select.js 的原始碼
+    last = { res: res, rules: rules };
+    renderFunnel(res, rules);
+    renderHits(res);
+    renderExcluded(res);
+    document.getElementById('c-hit').textContent = res.selected.length;
+    document.getElementById('c-ex').textContent = res.excluded.length;
+    return res;
+  }
+
+  // ── tabs ─────────────────────────────────────────────────────────
+  function showTab(which) {
+    var hit = which === 'hit';
+    document.getElementById('tab-hit').setAttribute('aria-selected', hit ? 'true' : 'false');
+    document.getElementById('tab-ex').setAttribute('aria-selected', hit ? 'false' : 'true');
+    document.getElementById('pane-hit').hidden = !hit;
+    document.getElementById('pane-ex').hidden = hit;
+  }
+  document.getElementById('tab-hit').addEventListener('click', function () { showTab('hit'); });
+  document.getElementById('tab-ex').addEventListener('click', function () { showTab('ex'); });
+
+  // ── 情境 ─────────────────────────────────────────────────────────
+  function flashChips(terms) {
+    // 排除清單預設收合；情境要讓人看見是哪幾條被關掉，所以先展開
+    var chipBox = document.getElementById('box-ex');
+    var det = chipBox && chipBox.closest ? chipBox.closest('details.grp') : null;
+    if (det) det.open = true;
+    terms.forEach(function (t) {
+      var c = document.querySelector('.chip.tog[data-term="' + t + '"]');
+      if (c) { c.classList.add('flash'); setTimeout(function () { c.classList.remove('flash'); }, 2400); }
+    });
+  }
+
+  function scenario(terms, outId) {
+    var before = {};
+    if (last) last.res.selected.forEach(function (s) { before[s.record.filename] = 1; });
+    var blocked = last ? last.res.excluded.filter(function (x) { return terms.indexOf(x.exclusionTerm) >= 0; }).length : 0;
+
+    terms.forEach(function (t) { state.exOff.add(t); });
+    highlight = new Set();
+    renderPanel();
+    var res = run();
+    var added = res.selected.filter(function (s) { return !before[s.record.filename]; });
+    added.forEach(function (s) { highlight.add(s.record.filename); });
+    renderHits(res);
+    showTab('hit');
+    flashChips(terms);
+
+    var paths = {};
+    added.forEach(function (s) { paths[s.matchedPaths.join('+')] = (paths[s.matchedPaths.join('+')] || 0) + 1; });
+    var pathTxt = Object.keys(paths).map(function (k) { return '路 ' + k.split('+').join('+') + ' × ' + paths[k]; }).join('、');
+    var out = document.getElementById(outId);
+    out.textContent = '原本被這 ' + terms.length + ' 條擋下 ' + blocked + ' 筆 → 命中 ' +
+      res.selected.length + ' 筆（新增 ' + added.length + '，' + pathTxt + '）' +
+      (blocked > added.length ? '；另 ' + (blocked - added.length) + ' 筆仍被清單裡其他條擋住' : '');
+
+    var first = document.querySelector('#pane-hit tr.is-new');
+    if (first && first.scrollIntoView) {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      first.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+    }
+    return added;
+  }
+
+  document.getElementById('scen-1').addEventListener('click', function () {
+    scenario(['戶外教育活動', '校外教學', '戶外教育'], 'scen-1-out');
+  });
+  document.getElementById('scen-2').addEventListener('click', function () {
+    scenario(['畢業紀念冊'], 'scen-2-out');
+  });
+
+  document.getElementById('reset-btn').addEventListener('click', function () {
+    state.types = new Set(DEFAULTS.announcementTypes);
+    state.cats = new Set(DEFAULTS.categories.map(function (c) { return c.code; }));
+    state.groups = clone(DEFAULTS.keywordGroups);
+    state.exOff = new Set();
+    highlight = new Set();
+    document.getElementById('scen-1-out').textContent = '';
+    document.getElementById('scen-2-out').textContent = '';
+    renderPanel();
+    run();
+  });
+  document.getElementById('ex-none').addEventListener('click', function () {
+    state.exOff = new Set(DEFAULTS.titleExclusions);
+    highlight = new Set();
+    renderPanel();
+    run();
+  });
+  document.getElementById('ex-all').addEventListener('click', function () {
+    state.exOff = new Set();
+    highlight = new Set();
+    renderPanel();
+    run();
+  });
+
+  // ── 下載真實 .xlsx（嵌入的 buildWorkbook + CDN ExcelJS） ──────────
+  var dlBtn = document.getElementById('dl-btn');
+  var downloads = null;
+
+  function toEnriched(item) {
+    var d = detailOf(item.record);
+    return {
+      tender: item,
+      budget: d ? d.budget : null,
+      budgetPublic: d ? !!d.budgetPublic : false,   // 沒細查資料就是未公開，絕不補 0
+      deadline: d ? d.deadline : null,
+      announcedOn: d ? d.announcedOn : null,
+      category: (item.record.brief && item.record.brief.category) || (d && d.category) || null,
+      pkPmsMain: d ? d.pkPmsMain : null,
+    };
+  }
+
+  dlBtn.addEventListener('click', function () {
+    if (!downloads || !window.ExcelJS) return;
+    dlBtn.disabled = true;
+    var old = dlBtn.textContent;
+    dlBtn.textContent = '產表中…';
+    Promise.resolve()
+      .then(function () {
+        var wb = buildWorkbook({                    // ← src/workbook.js 的原始碼
+          enriched: last.res.selected.map(toEnriched),
+          excluded: last.res.excluded,
+          date: DATE,
+          rules: last.rules,
+        });
+        return wb.xlsx.writeBuffer();
+      })
+      .then(function (buf) {
+        return downloads.save({ filename: '公標案查詢-' + DATE + '.xlsx', data: buf });
+      })
+      .then(function () { dlBtn.textContent = '已交給瀏覽器'; })
+      .catch(function (err) {
+        dlBtn.textContent = (err && err.code === 'declined') ? '已取消' : '產表失敗';
+        if (window.console) console.warn('xlsx 下載未完成：', err);
+      })
+      .then(function () {
+        setTimeout(function () { dlBtn.disabled = false; dlBtn.textContent = old; }, 2200);
+      });
+  });
+
+  // claude.use 比第一次 script 執行晚 resolve，也可能 resolve null —— 先把頁面畫對，
+  // 等它回來才把按鈕點亮。
+  try {
+    if (window.claude && typeof window.claude.use === 'function') {
+      window.claude.use('downloads').then(function (ns) {
+        if (!ns) return;                 // null：這個瀏覽情境跑不了，按鈕就不要出現
+        downloads = ns;
+        dlBtn.hidden = false;
+      }).catch(function () { /* 拿不到就維持隱藏 */ });
+    }
+  } catch (e) { /* 同上 */ }
+
+
+  // ── ③(b) 14 則 ADR（內容出自 docs/adr/） ─────────────────────────
+  // 決策者是這張表的重點：使用者拍板 / 我逕行決定 / 我推翻客戶規格，分開標示。
+  var ADRS = [
+    ['001', '資料源選用 openfun API，不自建爬蟲', '使用者（事後補實驗）', '已確認',
+      '用開放文化基金會維運的 openfun API 取當日公告與細查，不自建爬蟲。',
+      '這則當初由使用者拍板，事後才補做「API vs 自建爬蟲」的逐欄比較實驗 —— 也就是上面那個折疊區塊。決策先於證據，這在真實專案裡很常見；補實驗的意義是讓它可以被推翻。'],
+    ['002', '去重鍵用 filename，不用規格寫的 unit_id + job_number', '我（推翻規格）', '已實作',
+      '以 filename 作為公告唯一鍵去重。',
+      '實測發現 unit_id + job_number 是「案件」鍵而非公告鍵 —— 原公告與更正公告共用同一組值（中央研究院 2.1 / BTRC11503042E：TIQ-11-71107895 與 TIQ-12-71107895）。照規格實作，每一筆更正公告都會被當成重複丟掉，而更正常帶截止日延期、廠商資格變更。這不是效能問題，是客戶會漏掉重要資訊，而且這個錯誤是靜默的。'],
+    ['003', '分類為 null 的公告放行關鍵字路徑', '我', '已實作，建議客戶改',
+      'category 為 null 時放行關鍵字路徑（路 B），缺失的三個欄位如實印「未公開」。',
+      '嚴格套用「限勞務類」會把整個類型丟掉，等於漏報一整類規格明文要收的公告。在「可能多收雜訊」與「必然漏掉一整類」之間選前者 —— 多收的看得到，漏掉的看不到。實測代價是 5 筆雜訊，而客戶範本裡這個類型是 0 筆，因此回頭建議客戶改規格。'],
+    ['004', '被排除的標案保留並輸出「已排除」分區', '我（規格沒有）', '已實作',
+      'select() 回傳 { selected, excluded }；Excel 末尾增加「已排除」分區，依排除詞分組排序。',
+      '排除清單的回饋機制只有單向：客戶說「這件不該出現」就加一條，但被誤殺的案子無聲消失，客戶永遠不會反映，清單只會越來越嚴。讓誤殺可被發現。依排除詞分組是刻意的 —— 一眼就能判斷某條詞是不是訂得太寬。畢業紀念冊那 3 筆全是路 A 命中，就是這個分區存在才看得見的。'],
+    ['005', '輸出版型以客戶範本為準，而非規格文字', '我', '已實作，待客戶確認',
+      '以範本為準，並照範本的實際樣式實作（#873222 / #66272A / 斑馬紋 #F7F2F0 / 微軟正黑體 / 日期欄 Arial）。',
+      '範本是客戶手上真正在用的東西；文字描述可能是早期版本或轉述失真。但範本的排除清單顯然是舊版（裡面仍有 38 條清單要擋的雜訊），所以「那範本的版型會不會也已過時？」成為客戶問題清單第 3 題。'],
+    ['006', '只開一個測試接縫', '使用者同意', '已實作',
+      '唯一接縫是 runDailyReport({ pcc, clock, mailer, config })，外部世界全部從參數注入；中間的 select / enrich / buildWorkbook 都是純函式。',
+      '38 條排除清單是「會一直被改」的東西。若每個模組各開測試入口，每次改規則都要改多處測試結構；只開一個接縫，改規則時只需要加 fixture 案例。89 條測試中 8 條打在這個接縫上。'],
+    ['007', '以客戶範本作為 ground truth 驗證零漏報', '我', '已驗證',
+      '用同一天（2026-08-17）的真實資料跑完整流程，抽出兩份 Excel 的標案名稱做集合比對。',
+      'ground truth 必須來自實作之外。用自己的實作產生期望值等於自己出題自己改，只能驗證程式沒變、不能驗證程式正確。結果：漏掉 0 筆、共有 30 筆、多出 5 筆且全部溯源到同一個公告類型 —— 差異因此變成一個可以拿去問客戶的具體問題，而不是要調參數的模糊誤差。'],
+    ['008', '可重現性用黃金檔離線重播，比對內容不比對位元組', '我', '已實作',
+      'npm run verify 用已擷取的真實資料離線重播完整流程，逐列逐欄比對黃金檔 87 列。',
+      '離線：可重現性不該依賴網路，走 API 的話資料源改版就會失敗，那驗證的是 API 不是我們的程式。比內容不比位元組：xlsx 是 zip，含建置時間戳，逐位元組相同不可能 —— 這也是規格「byte-identical」做不到的同一個原因。改規則後 verify 一定會失敗，確認新結果正確才執行 verify:update，這是刻意的摩擦。'],
+    ['009', '先粗篩再細查，不對全天資料細查', '我', '已實作',
+      '順序固定為：公告類型白名單 → 分類解析 → 兩路命中 → filename 去重 → 排除清單 → 才逐案細查。',
+      '預算與截止投標不在當日清單裡，必須逐案再打一次 API，而匿名速率限制實測約「7 秒 10 次」且回應沒有 Retry-After。全天細查要 1787 次請求（限速下約 30 分鐘且必然撞 429），收斂後只要 35 次約 35 秒。白名單放第一步是因為它砍掉最多。'],
+    ['010', '預算未公開不補 0；細查失敗整份失敗', '規格要求', '已實作',
+      '「預算金額是否公開」開頭為「否」時預算一律留 null，表格印「未公開」；任何一筆細查失敗就讓整份報表拋出、不產出。',
+      '一個 0 和一個「未公開」在 Excel 上看起來都像資料，意義卻完全相反 —— 客戶看到 0 會以為這案子沒預算。寧可整份不出，也不出一份看起來完整卻少了預算與截止日的表。實作坑：預算是字串「1,000,000元」，而「是否公開」是多行字串「否\n預算金額涉及商業機密」，不能用 === 比對。'],
+    ['011', '排程交給作業系統，不用 Claude Code 的排程機制', '我（查證後）', '已文件化',
+      '由 cron / launchd 直接呼叫 npm run report，Claude Code 不在排程路徑上。',
+      '逐一查證每種機制都有致命條件不成立（見第 5 節的對照表）。更根本的原因是這條管線裡沒有 LLM —— 全是純函式，同一天的輸入必然得到同一份輸出，沒有需要判斷的環節，也就沒有讓模型參與的理由。'],
+    ['012', 'skill 定位為操作前門，不是交付機制', '使用者接受', '已實作',
+      '兩條安裝路徑都提供且實測可用；但 skill 的職責限定為臨時重跑、改規則、回答「這個標案為什麼沒出現」。',
+      'skill 是一段提示詞，前提是「有個 agent 正在跑」，而需求是一個截止時間，兩者不匹配。另外查證到 Claude Code 沒有任何安裝時的 hook，所以 skill 帶的 setup.sh 不會自己執行。但在需要判斷的地方 skill 確實有價值：逐條檢查 38 條排除清單人做很煩，模型做很快。'],
+    ['013', '展示網頁內嵌真實原始碼，不重寫瀏覽器版', '我', '已實作',
+      'build 腳本把 dates.js / select.js / workbook.js 逐字嵌入網頁，只去掉 export 與 import，ExcelJS 改用 CDN global。',
+      '重寫一份的話兩邊會慢慢走偏，示範也失去意義。內嵌真實原始碼，才能說「網頁上跑的就是那 89 條測試驗證過的同一份程式」。代價是必須在頁面上寫清楚兩條誠實聲明（資料是預先擷取的、放寬規則後的新案子沒有細查資料）。'],
+    ['014', '去識別化只換客戶名稱，保留搜尋規則', '使用者', '已執行',
+      '只代換身分（客戶名稱與部門，4 處）；config/rules.json 的 38 條排除清單、4 組關鍵字、4 個標的分類保留原樣。',
+      '規則是這個題目的核心。換成示意值的話「規則實驗室」變成假的，畢業紀念冊那個「排除清單推翻政府官方分類」的真實發現也就消失了 —— 課堂上最有價值的一幕沒了。前提是 repo 在 demo 結束後刪除。'],
+  ];
+
+  function byKind(by) {
+    if (by.indexOf('推翻') >= 0) return 'over';
+    if (by.indexOf('使用者') >= 0 || by.indexOf('規格') >= 0) return 'user';
+    return 'me';
+  }
+
+  (function renderAdrs() {
+    var host = document.getElementById('adr-list');
+    ADRS.forEach(function (a) {
+      var d = el('details', 'adr');
+      var sm = el('summary');
+      sm.appendChild(el('span', 'adr-id', a[0]));
+      sm.appendChild(el('span', null, a[1]));
+      sm.appendChild(el('span', 'by ' + byKind(a[2]), a[2]));
+      sm.appendChild(el('span', 'adr-st', a[3]));   // 第 5 格由 summary::after 的 +/- 佔用
+      d.appendChild(sm);
+      var body = el('div', 'adr-body');
+      var dl = el('dl');
+      dl.appendChild(el('dt', null, '決策'));
+      dl.appendChild(el('dd', null, a[4]));
+      dl.appendChild(el('dt', null, '理由'));
+      dl.appendChild(el('dd', null, a[5]));
+      body.appendChild(dl);
+      d.appendChild(body);
+      host.appendChild(d);
+    });
+  })();
+
+  // ── ③(a) 資料源實驗 —— 寫入 docs/experiments/api-vs-scraper.md 後才有內容 ──
+  (function renderSource() {
+    var body = document.getElementById('src-body');
+    var p1 = el('p');
+    p1.innerHTML = '這一則的實驗記錄會落在 <code>docs/experiments/api-vs-scraper.md</code>：拿 <b>10 筆真實標案</b>，把 openfun API 與直接爬 web.pcc.gov.tw 逐欄比對，並記錄延遲與解析脆弱度。';
+    body.appendChild(p1);
+    var p2 = el('p');
+    p2.innerHTML = '<b style="color:var(--warn)">此區塊尚未填入結論</b> —— 實驗在本頁產出時還在進行，而本頁的規則是「絕不編造數字」。等 <code>docs/experiments/api-vs-scraper.md</code> 就位後重跑 <code>node scripts/build-web.js</code>，這裡才會有實際的比較結果。目前既有的決策見下方 ADR 001（使用者拍板、事後補實驗）。';
+    body.appendChild(p2);
+  })();
+
+  // ── ④ 陷阱清單（內容出自 docs/spec-gaps.md） ──────────────────────
+  var TRAPS_DONE = [
+    ['去重鍵是錯的', '規格寫 unit_id + job_number 聯集去重。實測這是「案件」鍵，不是「公告」鍵 —— 原公告與更正公告共用同一組值。照規格實作會把每一筆更正公告都當成重複丟掉，客戶因此收不到截止日延期之類的關鍵異動。已改用 filename（公告唯一鍵，如 TIQ-11-71107895 / TIQ-12-71107895，尾碼相同、序號遞增），更正公告照收，標案名稱前綴【更正】。'],
+    ['排除清單會靜默誤殺', '38 條排除詞是對整個標題做字串包含比對，但這些詞描述的是「採購標的」。標題裡常同時出現場地名與真正的標的：「台中市OO活動中心啟用晚會宣傳影片製作」會被第 13 條「活動中心」擋下 —— 而這正是客戶要的媒體製作案。規格自承這串清單是「客戶回饋『這件不該出現』就加一條」累積出來的，卻沒有反方向的回饋路徑：被誤殺的案子無聲消失。已在 Excel 增加「已排除」分區（不在客戶範本內，是刻意加的漏報安全網），依排除詞分組排序，同一條詞的受害者排在一起。'],
+    ['有一種指定的公告類型，API 給不出任何欄位', '規格收錄的 10 種公告裡，「公開徵求廠商提供參考資料公告」的 brief.category 是 null，細查回來也只有 15–18 個欄位 —— 沒有標的分類、沒有預算、沒有截止投標。這類公告路 A 永遠篩不到，也無從判定是否為勞務類。若嚴格套用「限勞務類」會整類丟掉，等於漏報。已處理：分類為 null 時放行關鍵字路徑，三個欄位如實印「未公開」。'],
+    ['規格第四節自己就自相矛盾', '「版型」句列的是 機關／案號／招標方式／採購性質／公告日／截止日，「欄位」句列的是 標案名稱／機關／標的分類／截止投標／預算。兩者都不等於客戶範本。已改以範本為準。'],
+    ['版型：規格文字與客戶範本五處衝突', '分頁（一大類一分頁 vs 單一分頁）、每筆列數（兩列 vs 一列）、分區依據（標的分類 vs 搜尋路徑）、命中標示（四色色碼 vs 無色碼、底色只是斑馬紋）、欄位組成 —— 五處全部衝突。原則是範本優先於規格，因為範本是客戶手上真正在用的東西。'],
+    ['預算與日期的資料誠實', '預算金額是字串「1,000,000元」不是數字；「預算金額是否公開」是多行字串「否\\n預算金額涉及商業機密」，不能用 === "否" 比對；民國年需轉西元（範本一律 2026-08-21 17:00）。已處理：未公開一律印「未公開」，轉換失敗回 null 再印「未公開」，任何情況都不補 0、不猜值。'],
+    ['「與 ad-report byte-identical」技術上不可能', 'xlsx 是 zip，內含建置時間戳與 docProps，逐位元組相同在實務上做不到；且 tagtoo_xlsx.js 不在本 repo。已改為直接實作範本樣式，並留下 TODO 供日後抽換。建議與客戶把驗收條件改寫為「共用同一套樣式模組，外觀一致」。'],
+  ];
+  var TRAPS_OPEN = [
+    ['規格第三節整節不存在', 'requirements.md 章節是 一 → 二 → 四 → 五 → 六 → 七 → 八。已確認原始 Pages 檔本身就跳號（全文只有一段連續文字流，非轉檔遺漏）。send_when_empty = True 這行孤零零掛在第二節末尾，看來原屬第三節。第三節內容不明。'],
+    ['16:10 排程每天必然漏抓當日下午的公告，且永不補', '政府採購網整天都在上架公告，下午尤其多。16:10 執行等於每天必然漏掉 16:10 之後公告的案子。建議把查詢窗口改為「前一日 16:10 → 當日 16:10」，並保留已寄送紀錄避免重複 —— 但這需要跨日狀態，規格完全沒有這部分的設計。'],
+    ['更正公告的跨日重複', '更正公告通常隔天才發。今天寄出更正版時，客戶昨天已經看過原公告了。目前決定「照寄並標註【更正】」，由客戶自行判斷。要做到「只寄真正沒看過的」同樣需要跨日的已寄送紀錄。'],
+    ['範本本身的排除清單顯然是舊版', '客戶範本（2026-08-17）裡仍存在「115學年度學生露營活動」、「115學年度二年級戶外教學露營活動採購案」這類案子 —— 正是 38 條清單要擋的雜訊，表示範本產出時間早於排除清單定案。需確認範本的其他部分（版型）是否也已過時。'],
+    ['附件遞送方式未定', '規格第七節：Scheduler MCP 的 xlsx 附件遞送待確認，fallback 為下載連結。但核心目標明寫是「Email 一份 Excel」，改成連結等於變更交付形式，且牽涉檔案存放位置、存取權限、連結有效期，規格均未著墨。建議不依賴該 connector，直接用 SMTP 寄附件。'],
+    ['失敗時沒有通知路徑', 'send_when_empty = True 解決了「今天沒案子」的沉默，但系統掛掉時連空信都寄不出去。18:30 沒收到信，客戶無法分辨是「今天沒案子」還是「系統死了」。需要一條獨立的失敗通知路徑。'],
+    ['單點依賴第三方 API', '資料源是社群／基金會維運的服務，匿名呼叫有速率限制（實測約 10 次 / 7 秒即 429，且無 Retry-After 標頭）。建議申請 API token。服務中斷時的備援，規格未著墨。'],
+  ];
+
+  function renderTraps(host, items, kind) {
+    var box = document.getElementById(host);
+    items.forEach(function (t, i) {
+      var d = el('details', 'trap');
+      var s = el('summary');
+      s.appendChild(el('span', 'idx', String(i + 1).padStart(2, '0')));
+      s.appendChild(el('span', null, t[0]));
+      s.appendChild(el('span', 'st ' + kind, kind === 'done' ? '已處理' : '待客戶確認'));
+      d.appendChild(s);
+      var b = el('div', 'trap-body');
+      b.appendChild(el('p', null, t[1]));
+      d.appendChild(b);
+      box.appendChild(d);
+    });
+  }
+  renderTraps('traps-done', TRAPS_DONE, 'done');
+  renderTraps('traps-open', TRAPS_OPEN, 'open');
+
+  // ── 亮暗切換（三態：跟隨系統 → 亮 → 暗） ──────────────────────────
+  document.getElementById('theme-btn').addEventListener('click', function () {
+    var r = document.documentElement;
+    var cur = r.getAttribute('data-theme');
+    r.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  });
+
+  // ── 進場：預設規則就把整頁畫滿，不留空殼 ─────────────────────────
+  renderPanel();
+  run();
+  showTab('hit');
+})();
+</script>

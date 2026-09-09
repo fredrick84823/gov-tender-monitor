@@ -1,0 +1,8 @@
+node_modules/
+.env
+.env.*
+config/recipients*.json
+config/recipients*.yaml
+out/
+*.xlsx
+.DS_Store

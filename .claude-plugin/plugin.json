@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/plugin.schema.json",
+  "name": "gov-tender-monitor",
+  "version": "0.1.0",
+  "description": "產出「公標網」政府標案每日監控報表（Excel）。",
+  "skills": [
+    "./skills/gov-tender-monitor"
+  ],
+  "author": {
+    "name": "fredrick84823"
+  },
+  "homepage": "https://github.com/fredrick84823/gov-tender-monitor"
+}

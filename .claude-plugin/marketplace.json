@@ -1,0 +1,13 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "gov-tender-monitor",
+  "description": "公標網 — 政府標案每日監控。從政府電子採購網撈出媒體、廣告、行銷、公關相關的招標公告，產出帶官網連結的 Excel 日報。",
+  "owner": { "name": "fredrick84823" },
+  "plugins": [
+    {
+      "name": "gov-tender-monitor",
+      "source": "./",
+      "description": "產出「公標網」政府標案每日監控報表（Excel）。"
+    }
+  ]
+}

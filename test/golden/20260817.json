@@ -1,0 +1,927 @@
+{
+  "stats": {
+    "fetched": 1787,
+    "selected": 35,
+    "excluded": 27,
+    "corrections": 2,
+    "budgetUndisclosed": 0
+  },
+  "sheet": "標案日報 20260817",
+  "rows": [
+    [
+      "政府採購網標案日報 — 2026-08-17（共 35 筆）",
+      "政府採購網標案日報 — 2026-08-17（共 35 筆）",
+      "政府採購網標案日報 — 2026-08-17（共 35 筆）",
+      "政府採購網標案日報 — 2026-08-17（共 35 筆）",
+      "政府採購網標案日報 — 2026-08-17（共 35 筆）",
+      "政府採購網標案日報 — 2026-08-17（共 35 筆）"
+    ],
+    [
+      "【大類搜尋】標的分類 871/875/879/96 — 18 筆",
+      "【大類搜尋】標的分類 871/875/879/96 — 18 筆",
+      "【大類搜尋】標的分類 871/875/879/96 — 18 筆",
+      "【大類搜尋】標的分類 871/875/879/96 — 18 筆",
+      "【大類搜尋】標的分類 871/875/879/96 — 18 筆",
+      "【大類搜尋】標的分類 871/875/879/96 — 18 筆"
+    ],
+    [
+      "公告日期",
+      "機關名稱",
+      "標案名稱",
+      "截止投標",
+      "預算金額",
+      "標的分類"
+    ],
+    [
+      "2026-08-17",
+      "臺灣銀行股份有限公司",
+      {
+        "text": "臺灣銀行資訊處115年度中央監控、警衛保全及清潔服務綜合管理",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMwNjQ"
+      },
+      "2026-08-24 10:00",
+      "14,219,000元",
+      "勞務類879-其他商業服務"
+    ],
+    [
+      "2026-08-17",
+      "文化部影視及流行音樂產業局",
+      {
+        "text": "「2027年美國南方音樂節（SXSW）展演活動」採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEyOTA4MjY"
+      },
+      "2026-09-01 17:30",
+      "11,000,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣政府",
+      {
+        "text": "花蓮城市魅力多元行銷服務案(開口契約)",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMwNzc"
+      },
+      "2026-08-27 17:00",
+      "9,000,000元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "2026-08-17",
+      "文化部",
+      {
+        "text": "「文化部第三屆社區營造獎頒獎典禮暨市集專業服務委託案」藝文勞務採購",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMxMTM"
+      },
+      "2026-09-01 09:30",
+      "9,900,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "國立原住民族博物館籌備處",
+      {
+        "text": "賽德克族海外文化資料復返、數位典藏導入及跨國合作計畫勞務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMxNDM"
+      },
+      "2026-08-27 17:00",
+      "1,700,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "高雄市鳳山區公所",
+      {
+        "text": "2026鳳山區重陽敬老活動",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyMDg"
+      },
+      "2026-08-25 17:00",
+      "1,990,450元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "財團法人農業科技研究院",
+      {
+        "text": "2026台灣醫療科技展-農業健康館",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMzMDU"
+      },
+      "2026-08-31 17:00",
+      "4,550,000元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "2026-08-17",
+      "基隆市文化觀光局",
+      {
+        "text": "2026田寮河兩岸暨周邊點燈計畫",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEyOTU0NDM"
+      },
+      "2026-09-03 17:00",
+      "14,000,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "南投縣政府",
+      {
+        "text": "【更正】南投縣政府115年大型政令宣導活動",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEyOTE3NDU"
+      },
+      "2026-08-26 17:00",
+      "15,500,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣豐濱鄉公所",
+      {
+        "text": "115~116年度花蓮縣豐濱鄉社區營造及村落文化發展計畫-撒奇萊雅族海洋漁獵先行點-海祭文化傳承計畫",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI3OTE"
+      },
+      "2026-08-25 09:30",
+      "510,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "財團法人蘭陽農業發展基金會",
+      {
+        "text": "2027宜蘭綠色博覽會-臺灣原生種植物園委託專業服務案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMwNjg"
+      },
+      "2026-08-26 17:00",
+      "1,450,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "新北市政府高灘地工程管理處",
+      {
+        "text": "115年度新北市河濱公園影像紀錄採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMxNzg"
+      },
+      "2026-08-24 17:00",
+      "1,000,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "新竹市立體育場",
+      {
+        "text": "新竹市棒球場指標標示採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyMzc"
+      },
+      "2026-08-24 17:00",
+      "892,500元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣壽豐鄉公所",
+      {
+        "text": "2026年「懿起同慶聯合豐年節」活動採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyMzg"
+      },
+      "2026-08-24 09:00",
+      "620,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣壽豐鄉公所",
+      {
+        "text": "幸福壽豐、歡慶中秋壽豐鄉115年中秋聯歡晚會",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyNTk"
+      },
+      "2026-08-24 10:30",
+      "1,142,100元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "臺北市政府工務局水利工程處",
+      {
+        "text": "115年度臺北市河濱公園主題插畫創作採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMzMTk"
+      },
+      "2026-08-25 17:00",
+      "327,273元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "2026-08-17",
+      "財政部北區國稅局桃園分局",
+      {
+        "text": "財政部北區國稅局桃園分局 115年度「私菸OUT！校園戲劇派對」防制菸品稅捐 逃漏租稅宣導活動委外服務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDM0MjE"
+      },
+      "2026-08-21 17:00",
+      "400,000元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣光復鄉公所",
+      {
+        "text": "2026年太平洋原住民傳統射箭巡迴賽-光復站",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyMDA"
+      },
+      "2026-08-24 09:30",
+      "540,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "【A組關鍵字】廣告/媒體/行銷/宣導/宣傳/電視/報紙/雜誌/廣播/戶外/電子媒體/推廣 — 7 筆",
+      "【A組關鍵字】廣告/媒體/行銷/宣導/宣傳/電視/報紙/雜誌/廣播/戶外/電子媒體/推廣 — 7 筆",
+      "【A組關鍵字】廣告/媒體/行銷/宣導/宣傳/電視/報紙/雜誌/廣播/戶外/電子媒體/推廣 — 7 筆",
+      "【A組關鍵字】廣告/媒體/行銷/宣導/宣傳/電視/報紙/雜誌/廣播/戶外/電子媒體/推廣 — 7 筆",
+      "【A組關鍵字】廣告/媒體/行銷/宣導/宣傳/電視/報紙/雜誌/廣播/戶外/電子媒體/推廣 — 7 筆",
+      "【A組關鍵字】廣告/媒體/行銷/宣導/宣傳/電視/報紙/雜誌/廣播/戶外/電子媒體/推廣 — 7 筆"
+    ],
+    [
+      "公告日期",
+      "機關名稱",
+      "標案名稱",
+      "截止投標",
+      "預算金額",
+      "標的分類"
+    ],
+    [
+      "2026-08-17",
+      "高雄市立龍華國民中學",
+      {
+        "text": "115學年度二年級戶外教學露營活動採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI2NTY"
+      },
+      "2026-08-27 17:00",
+      "1,908,000元",
+      "勞務類74-支援及輔助運輸服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣政府",
+      {
+        "text": "花蓮城市魅力多元行銷服務案(開口契約)",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMwNzc"
+      },
+      "2026-08-27 17:00",
+      "9,000,000元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "2026-08-17",
+      "南投縣政府",
+      {
+        "text": "【更正】南投縣政府115年大型政令宣導活動",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEyOTE3NDU"
+      },
+      "2026-08-26 17:00",
+      "15,500,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "國防部軍事情報局",
+      {
+        "text": "廣播節目編播系統維護",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=PPW-1-70112755.xml"
+      },
+      "未公開",
+      "未公開",
+      "未公開"
+    ],
+    [
+      "2026-08-17",
+      "臺中市青年高級中學",
+      {
+        "text": "115學年度高三戶外教學採購案",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=PPW-1-70112890.xml"
+      },
+      "未公開",
+      "未公開",
+      "未公開"
+    ],
+    [
+      "2026-08-17",
+      "財政部北區國稅局桃園分局",
+      {
+        "text": "財政部北區國稅局桃園分局 115年度「私菸OUT！校園戲劇派對」防制菸品稅捐 逃漏租稅宣導活動委外服務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDM0MjE"
+      },
+      "2026-08-21 17:00",
+      "400,000元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "2026-08-17",
+      "高雄市政府運動發展局",
+      {
+        "text": "高雄國家體育場戶外景觀坡地及步道區整護採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI4MDM"
+      },
+      "2026-08-21 17:00",
+      "548,683元",
+      "勞務類522-土木工程施工服務"
+    ],
+    [
+      "【B組關鍵字】數位/網路/社群/新媒體 — 8 筆",
+      "【B組關鍵字】數位/網路/社群/新媒體 — 8 筆",
+      "【B組關鍵字】數位/網路/社群/新媒體 — 8 筆",
+      "【B組關鍵字】數位/網路/社群/新媒體 — 8 筆",
+      "【B組關鍵字】數位/網路/社群/新媒體 — 8 筆",
+      "【B組關鍵字】數位/網路/社群/新媒體 — 8 筆"
+    ],
+    [
+      "公告日期",
+      "機關名稱",
+      "標案名稱",
+      "截止投標",
+      "預算金額",
+      "標的分類"
+    ],
+    [
+      "2026-08-17",
+      "台灣中油股份有限公司油品行銷事業部東區營業處",
+      {
+        "text": "115-116年東區處油罐汽車數位行車紀錄系統(電子大餅)維護案(兩年)",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI4NTI"
+      },
+      "2026-08-27 17:00",
+      "4,980,000元",
+      "勞務類74-支援及輔助運輸服務"
+    ],
+    [
+      "2026-08-17",
+      "臺中市政府數位發展局",
+      {
+        "text": "115年數位市民維運與功能增修案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI3MTc"
+      },
+      "2026-09-03 17:00",
+      "15,350,000元",
+      "勞務類849-其他電腦服務"
+    ],
+    [
+      "2026-08-17",
+      "國立原住民族博物館籌備處",
+      {
+        "text": "賽德克族海外文化資料復返、數位典藏導入及跨國合作計畫勞務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMxNDM"
+      },
+      "2026-08-27 17:00",
+      "1,700,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "新北市政府環境保護局",
+      {
+        "text": "115-117年數位式遠端監錄服務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMxNjE"
+      },
+      "2026-08-26 17:00",
+      "8,373,776元",
+      "勞務類94-污水及垃圾處理、公共衛生及其他環保服務"
+    ],
+    [
+      "2026-08-17",
+      "台灣中油股份有限公司石化事業部",
+      {
+        "text": "網路設備配件(廠牌:MOXA)",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=PPW-1-70112449.xml"
+      },
+      "未公開",
+      "未公開",
+      "未公開"
+    ],
+    [
+      "2026-08-17",
+      "臺灣港務股份有限公司高雄港務分公司",
+      {
+        "text": "116年度網路系統暨虛擬化平台維護案",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=PPW-1-70112896.xml"
+      },
+      "未公開",
+      "未公開",
+      "未公開"
+    ],
+    [
+      "2026-08-17",
+      "台灣中油股份有限公司油品行銷事業部台北營業處",
+      {
+        "text": "台北處加油站GPS網路校時器75台購置",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=PPW-1-70112910.xml"
+      },
+      "未公開",
+      "未公開",
+      "未公開"
+    ],
+    [
+      "2026-08-17",
+      "國家發展委員會",
+      {
+        "text": "115年度國發會社群經營與公關服務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI5MDE"
+      },
+      "2026-08-19 17:00",
+      "1,200,000元",
+      "勞務類911-政府行政服務"
+    ],
+    [
+      "【C組關鍵字】活動/音樂節/音樂祭/藝術祭/購物節/燈會/音樂會/演唱會/晚會 — 11 筆",
+      "【C組關鍵字】活動/音樂節/音樂祭/藝術祭/購物節/燈會/音樂會/演唱會/晚會 — 11 筆",
+      "【C組關鍵字】活動/音樂節/音樂祭/藝術祭/購物節/燈會/音樂會/演唱會/晚會 — 11 筆",
+      "【C組關鍵字】活動/音樂節/音樂祭/藝術祭/購物節/燈會/音樂會/演唱會/晚會 — 11 筆",
+      "【C組關鍵字】活動/音樂節/音樂祭/藝術祭/購物節/燈會/音樂會/演唱會/晚會 — 11 筆",
+      "【C組關鍵字】活動/音樂節/音樂祭/藝術祭/購物節/燈會/音樂會/演唱會/晚會 — 11 筆"
+    ],
+    [
+      "公告日期",
+      "機關名稱",
+      "標案名稱",
+      "截止投標",
+      "預算金額",
+      "標的分類"
+    ],
+    [
+      "2026-08-17",
+      "農業部種苗改良繁殖場",
+      {
+        "text": "115年花海活動草花種植區場地布置",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI2NDI"
+      },
+      "2026-08-27 17:00",
+      "3,664,000元",
+      "勞務類881-附帶於農、牧、林之服務"
+    ],
+    [
+      "2026-08-17",
+      "農業部種苗改良繁殖場",
+      {
+        "text": "115年新社花海活動田間管理勞務承攬",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMzNjA"
+      },
+      "2026-08-27 17:00",
+      "1,992,000元",
+      "勞務類881-附帶於農、牧、林之服務"
+    ],
+    [
+      "2026-08-17",
+      "高雄市立龍華國民中學",
+      {
+        "text": "115學年度二年級戶外教學露營活動採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI2NTY"
+      },
+      "2026-08-27 17:00",
+      "1,908,000元",
+      "勞務類74-支援及輔助運輸服務"
+    ],
+    [
+      "2026-08-17",
+      "文化部影視及流行音樂產業局",
+      {
+        "text": "「2027年美國南方音樂節（SXSW）展演活動」採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEyOTA4MjY"
+      },
+      "2026-09-01 17:30",
+      "11,000,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "高雄市鳳山區公所",
+      {
+        "text": "2026鳳山區重陽敬老活動",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyMDg"
+      },
+      "2026-08-25 17:00",
+      "1,990,450元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "南投縣政府",
+      {
+        "text": "【更正】南投縣政府115年大型政令宣導活動",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEyOTE3NDU"
+      },
+      "2026-08-26 17:00",
+      "15,500,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "臺南市政府",
+      {
+        "text": "【更正】「115年度原住民族文化健康站活力健康操南區初賽活動」勞務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDIzNDI"
+      },
+      "2026-08-31 17:00",
+      "3,224,000元",
+      "勞務類911-政府行政服務"
+    ],
+    [
+      "2026-08-17",
+      "屏東縣立萬新國民中學",
+      {
+        "text": "115學年度學生露營活動",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI4MzA"
+      },
+      "2026-08-21 17:00",
+      "784,400元",
+      "勞務類641-旅館及其他住宿服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣壽豐鄉公所",
+      {
+        "text": "2026年「懿起同慶聯合豐年節」活動採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyMzg"
+      },
+      "2026-08-24 09:00",
+      "620,000元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "花蓮縣壽豐鄉公所",
+      {
+        "text": "幸福壽豐、歡慶中秋壽豐鄉115年中秋聯歡晚會",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDMyNTk"
+      },
+      "2026-08-24 10:30",
+      "1,142,100元",
+      "勞務類96-娛樂,文化,體育服務"
+    ],
+    [
+      "2026-08-17",
+      "財政部北區國稅局桃園分局",
+      {
+        "text": "財政部北區國稅局桃園分局 115年度「私菸OUT！校園戲劇派對」防制菸品稅捐 逃漏租稅宣導活動委外服務採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDM0MjE"
+      },
+      "2026-08-21 17:00",
+      "400,000元",
+      "勞務類871-廣告服務"
+    ],
+    [
+      "【D組關鍵字】AI/人工智能 — 2 筆",
+      "【D組關鍵字】AI/人工智能 — 2 筆",
+      "【D組關鍵字】AI/人工智能 — 2 筆",
+      "【D組關鍵字】AI/人工智能 — 2 筆",
+      "【D組關鍵字】AI/人工智能 — 2 筆",
+      "【D組關鍵字】AI/人工智能 — 2 筆"
+    ],
+    [
+      "公告日期",
+      "機關名稱",
+      "標案名稱",
+      "截止投標",
+      "預算金額",
+      "標的分類"
+    ],
+    [
+      "2026-08-17",
+      "德明財經科技大學",
+      {
+        "text": "AI運輸配送等平台年訂閱費採購案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI2Nzk"
+      },
+      "2026-08-25 17:00",
+      "3,203,000元",
+      "勞務類842-軟體執行服務"
+    ],
+    [
+      "2026-08-17",
+      "數位發展部資通安全署",
+      {
+        "text": "政府機關AI資通安全參考指引服務案",
+        "link": "https://web.pcc.gov.tw/tps/QueryTender/query/searchTenderDetail?pkPmsMain=NzEzMDI4MTM"
+      },
+      "2026-08-24 17:00",
+      "1,150,000元",
+      "勞務類911-政府行政服務"
+    ],
+    [
+      "【已排除】被排除關鍵字擋下 — 27 筆（供抽查，確認沒有誤殺）",
+      "【已排除】被排除關鍵字擋下 — 27 筆（供抽查，確認沒有誤殺）",
+      "【已排除】被排除關鍵字擋下 — 27 筆（供抽查，確認沒有誤殺）",
+      "【已排除】被排除關鍵字擋下 — 27 筆（供抽查，確認沒有誤殺）",
+      "【已排除】被排除關鍵字擋下 — 27 筆（供抽查，確認沒有誤殺）",
+      "【已排除】被排除關鍵字擋下 — 27 筆（供抽查，確認沒有誤殺）"
+    ],
+    [
+      "公告日期",
+      "機關名稱",
+      "標案名稱",
+      "被哪一條擋下",
+      "原本命中",
+      "公告類型"
+    ],
+    [
+      "2026-08-17",
+      "桃園市桃園區慈文國民小學",
+      {
+        "text": "115學年度1-5年級暨幼兒園戶外教育採購",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303405.xml"
+      },
+      "戶外教育",
+      "A組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "高雄市湖內區大湖國民小學",
+      {
+        "text": "115學年度六年級戶外教育",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303233.xml"
+      },
+      "戶外教育",
+      "A組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市新市區大社國民小學",
+      {
+        "text": "臺南市大社國小115學年度低、中、五及六年級戶外教育勞務採購",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-11-71093964.xml"
+      },
+      "戶外教育",
+      "A組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市中西區協進國民小學",
+      {
+        "text": "臺南市協進國小115學年度六年級戶外教育勞務採購",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303560.xml"
+      },
+      "戶外教育",
+      "A組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市學甲區學甲國民小學",
+      {
+        "text": "臺南市學甲國小115學年度三至六年級戶外教育勞務採購",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71302780.xml"
+      },
+      "戶外教育",
+      "A組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "高雄市三民區光武國民小學",
+      {
+        "text": "115學年度3、4年級戶外教育活動",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-11-71092207.xml"
+      },
+      "戶外教育活動",
+      "A組、C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "高雄市鳳山區正義國民小學",
+      {
+        "text": "115學年度六年級戶外教育活動",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303565.xml"
+      },
+      "戶外教育活動",
+      "A組、C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "桃園市立東安國民中學",
+      {
+        "text": "116學年度9年級戶外教育活動-畢業旅行",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303003.xml"
+      },
+      "戶外教育活動",
+      "A組、C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺中市立五權國民中學",
+      {
+        "text": "臺中市立五權國民中學115學年度一年級戶外教育活動",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71302806.xml"
+      },
+      "戶外教育活動",
+      "A組、C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市安南區安順國民小學",
+      {
+        "text": "臺南市安南區安順國小 115學年度一、二年級戶外教育活動勞務採購",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71302930.xml"
+      },
+      "戶外教育活動",
+      "A組、C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市安南區安順國民小學",
+      {
+        "text": "臺南市安南區安順國小115學年度三、四、五年級戶外教育活動勞務採購",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71302968.xml"
+      },
+      "戶外教育活動",
+      "A組、C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "苗栗縣政府",
+      {
+        "text": "「苗栗縣瀕危物種及重要棲地生態服務給付推動計畫暨石虎保育有功人員獎勵表揚活動」委託專業服務案",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303157.xml"
+      },
+      "表揚活動",
+      "C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺中市北屯區公所",
+      {
+        "text": "臺中市北屯區115年金婚、鑽石婚暨白金婚紀念表揚活動",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71300030.xml"
+      },
+      "表揚活動",
+      "C組",
+      "公開取得報價單或企劃書更正公告"
+    ],
+    [
+      "2026-08-17",
+      "高雄市立新莊高級中學",
+      {
+        "text": "115年活動中心多功能運動球場整修工程-規劃設計及監造",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-12-71093520.xml"
+      },
+      "活動中心",
+      "C組",
+      "公開取得報價單或企劃書更正公告"
+    ],
+    [
+      "2026-08-17",
+      "農業部農田水利署",
+      {
+        "text": "115年度水利小組業務考察研習活動",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-3-71094181.xml"
+      },
+      "研習活動",
+      "C組",
+      "經公開評選或公開徵求之限制性招標公告"
+    ],
+    [
+      "2026-08-17",
+      "國立臺灣博物館",
+      {
+        "text": "「歷史建築原臺灣重要物資營團修復工程低碳建築評估計畫」",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-11-71094148.xml"
+      },
+      "修復工程",
+      "標的分類",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市立崇明國民中學",
+      {
+        "text": "115年二年級校外教學活動勞務採購案",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-3-71094097.xml"
+      },
+      "校外教學",
+      "C組",
+      "經公開評選或公開徵求之限制性招標公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市立崇明國民中學",
+      {
+        "text": "115年三年級校外教學活動勞務採購案",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-3-71094196.xml"
+      },
+      "校外教學",
+      "C組",
+      "經公開評選或公開徵求之限制性招標公告"
+    ],
+    [
+      "2026-08-17",
+      "臺中市立光正國民中學",
+      {
+        "text": "115學年度9年級學生校外教學活動計畫",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-12-71092447.xml"
+      },
+      "校外教學",
+      "C組",
+      "公開取得報價單或企劃書更正公告"
+    ],
+    [
+      "2026-08-17",
+      "高雄市岡山區壽天國民小學",
+      {
+        "text": "壽天國小115學年度六年級校外教學畢業宿營活動勞務採購案",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71292575.xml"
+      },
+      "校外教學",
+      "C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺南市立文賢國民中學",
+      {
+        "text": "臺南市立文賢國民中學「115學年度三年級學生校外教學活動」勞務採購案",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-11-71094112.xml"
+      },
+      "校外教學",
+      "C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺北市民族實驗國民中學",
+      {
+        "text": "115年度臺北市學校採購與工程諮詢輔導團參訪活動",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-11-71092706.xml"
+      },
+      "參訪活動",
+      "C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺中市立福科國民中學",
+      {
+        "text": "115學年度第16屆畢業紀念冊編印",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71302965.xml"
+      },
+      "畢業紀念冊",
+      "標的分類",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "新北市三重區五華國民小學",
+      {
+        "text": "新北市三重區五華國民小學115學年度六年級畢業紀念冊製作",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=TIQ-11-71094403.xml"
+      },
+      "畢業紀念冊",
+      "標的分類",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "臺中市立光德國民中學",
+      {
+        "text": "臺中市立光德國民中學委託編印115學年度畢業紀念冊",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303102.xml"
+      },
+      "畢業紀念冊",
+      "標的分類",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "新竹市消防局",
+      {
+        "text": "115年「中秋節消防、義消及救難志工人員親子聯誼活動」",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71303518.xml"
+      },
+      "聯誼活動",
+      "C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "2026-08-17",
+      "農業部農田水利署",
+      {
+        "text": "115年度農田水利員工交流暨工程設施觀摩活動",
+        "link": "https://web.pcc.gov.tw/prkms/tender/common/noticeDate/redirectPublic?ds=20260817&fn=ttd-71300709.xml"
+      },
+      "觀摩活動",
+      "C組",
+      "公開取得報價單或企劃書公告"
+    ],
+    [
+      "資料來源：政府電子採購網（每日公告）｜產出時間：<正規化>｜點擊標案名稱可開啟官網原文",
+      "資料來源：政府電子採購網（每日公告）｜產出時間：<正規化>｜點擊標案名稱可開啟官網原文",
+      "資料來源：政府電子採購網（每日公告）｜產出時間：<正規化>｜點擊標案名稱可開啟官網原文",
+      "資料來源：政府電子採購網（每日公告）｜產出時間：<正規化>｜點擊標案名稱可開啟官網原文",
+      "資料來源：政府電子採購網（每日公告）｜產出時間：<正規化>｜點擊標案名稱可開啟官網原文",
+      "資料來源：政府電子採購網（每日公告）｜產出時間：<正規化>｜點擊標案名稱可開啟官網原文"
+    ]
+  ]
+}

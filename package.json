@@ -1,0 +1,26 @@
+{
+  "name": "gov-tender-monitor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "公標網 — 政府標案每日監控",
+  "scripts": {
+    "report": "node bin/report.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "setup": "bash scripts/setup.sh",
+    "doctor": "node scripts/doctor.js",
+    "verify": "node scripts/verify.js",
+    "verify:update": "node scripts/verify.js --write",
+    "build:demo-data": "node scripts/build-demo-data.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0"
+  },
+  "devDependencies": {
+    "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
